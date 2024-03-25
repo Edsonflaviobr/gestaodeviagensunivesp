@@ -61,6 +61,8 @@ const CadastroViagem = () => {
   };
 
   return (
+    <>
+    <Header />
       <div className="page-container">
         <label>Data:</label>
         <DatePicker
@@ -91,6 +93,7 @@ const CadastroViagem = () => {
   
         <button onClick={handleCadastrar}>Cadastrar Viagem</button>
       </div>
+      </>
   );
 }
   
