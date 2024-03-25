@@ -56,11 +56,11 @@ const Login = ({ email, password }) => {
             <body>
                 <div className="body__content">
                     <div className="body__content--text">
-                        <Title title="Usúario favor realizar seu login..." color="#0f014d" />
-                        <Text text="Caso ainda não possua login, favor realizar seu cadastro no sistema." />
+                        <Title title="Login..." color="#0f014d" />
+                        <Text text="Caso ainda não possua cadastro, favor clique em 'Criar Conta'." />
                     </div>
                     <div className="body__content--form">
-                        <Text text="Acesse o Gerenciador de Viagens ECO com a sua conta." />
+                        <Text text="Acesse o Gerenciador de Viagens Saúde Tour com a sua conta." />
 
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <Input
