@@ -1,0 +1,16 @@
+.tabela-container {
+  width: 100%; /* Alterando a largura para 100% para que se ajuste dinamicamente ao contêiner pai */
+  max-width: 1150px; /* Mantendo uma largura máxima de 1150px */
+  margin-top: 30px;
+}
+
+thead tr th {
+  font-family: 'Open Sans', sans-serif; /* Usando a fonte Open Sans */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000; /* Alterando a cor do texto para preto */
+  background-color: #3134ee;
+  padding: 10px;
+}

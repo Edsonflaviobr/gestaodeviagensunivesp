@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Para ocupar a altura total da tela */
+    margin: 0;
+    background-color: #f2f2f2; /* Cor de fundo da página */
+  }
+  
+  /* Estilo para a tabela */
+  table {
+    border-collapse: collapse;
+  }
+  
+  /* Estilo para as células da tabela */
+  td {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Estilo para as imagens dentro das células */
+  td img {
+    width: 150px;
+    height: 150px;
+    display: block; /* Para centralizar a imagem horizontalmente */
+    margin: 0 auto; /* Para centralizar a imagem horizontalmente */
+  }
+  
+  /* Estilo para os textos dentro das células */
+  td strong {
+    display: block; /* Para quebrar linha após a imagem */
+    margin-top: 10px; /* Espaço entre a imagem e o texto */
+  }
+
+  .disabled-text {
+    color: #808080; /* Cinza */
+  }
+  .menu-link {
+    font-family: 'Open Sans', sans-serif; /* Usando a fonte Open Sans */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    width: 100%;
+    margin: 10px 0px;
+    color: #100f1d; /* Alterando a cor do texto para branco */
+    text-decoration: none; /* Remover sublinhado padrão */
+  }
+  
+  .menu-link:hover {
+    text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
+  }
+    
+  

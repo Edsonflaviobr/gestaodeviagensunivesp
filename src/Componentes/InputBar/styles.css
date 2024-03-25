@@ -1,0 +1,23 @@
+.barra-de-pesquisa {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #ffffff;
+  border-radius: 50px;
+  padding: 20px;
+  border: 1px solid #ffffff;
+  outline: none;
+  background-color: transparent;
+  height: 40px;
+  width: 650px;
+  margin-right: 15px;
+}
+
+.barra-de-pesquisa::placeholder {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #7e7c79;
+}

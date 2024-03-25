@@ -1,0 +1,39 @@
+button {
+    position: relative; /* Adicionando posição relativa */
+    overflow: hidden; /* Ocultando qualquer conteúdo fora da área do botão */
+    z-index: 1; /* Ajustando a ordem de empilhamento para garantir que o botão esteja acima do pseudo-elemento */
+    background: var(--primary-color);
+    border: none;
+    border-radius: 22px;
+    color: #fff;
+    padding: 10px 20px;
+    width: auto;
+    height: 40px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background: var(--secondary-color);
+  }
+  
+  button::after {
+    content: '';
+    position: absolute;
+    border: 1px solid var(--primary-color);
+    height: calc(100% + 10px);
+    top: -5px;
+    left: -6px;
+    width: calc(100% + 10px);
+    border-radius: 22px;
+    transition: border-color 0.3s ease;
+    z-index: -1; /* Ajustando a ordem de empilhamento para que fique atrás do botão */
+  }
+  
+  button:hover::after {
+    border-color: var(--secondary-color);
+  }
+  

@@ -1,0 +1,10 @@
+h2 {
+  font-family: 'Open Sans', sans-serif; /* Usando a fonte Open Sans */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  width: 100%;
+  margin-bottom: 20px;
+  line-height: 44px;
+  color: #0f014d; /* Alterando a cor do texto para branco */
+}

@@ -1,0 +1,33 @@
+.botao-pesquisar {
+  width: 150px;
+  height: 40px; /* Ajustando a altura para 40px para melhorar a visibilidade e acessibilidade */
+  margin-top: 1px;
+  background: var(--primary-color); /* Usando a cor primária definida no :root */
+  border: none; /* Removendo a borda */
+  border-radius: 22px;
+  position: relative;
+  color: #000000;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Adicionando transição suave de cor de fundo */
+}
+
+.botao-pesquisar:hover {
+  background: var(--secondary-color); /* Mudando a cor de fundo ao passar o mouse */
+}
+
+.botao-pesquisar::after {
+  content: '';
+  position: absolute;
+  border: 1px solid var(--primary-color); /* Usando a cor primária para a borda */
+  height: calc(100% + 10px);
+  top: -5px;
+  left: -6px;
+  width: calc(100% + 10px);
+  border-radius: 22px;
+  transition: border-color 0.3s ease; /* Adicionando transição suave para a cor da borda */
+}
+
+.botao-pesquisar:hover::after {
+  border-color: var(--secondary-color); /* Mudando a cor da borda ao passar o mouse */
+}

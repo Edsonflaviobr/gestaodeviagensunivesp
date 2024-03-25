@@ -1,0 +1,11 @@
+.texto {
+    font-family: 'Open Sans', sans-serif; /* Usando a fonte Open Sans */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    width: 100%;
+    margin: 10px 0px;
+    color: #100f1d; /* Alterando a cor do texto para branco */
+  }
+  

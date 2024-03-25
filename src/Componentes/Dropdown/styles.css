@@ -1,0 +1,22 @@
+.lista-categoria {
+  width: 300px;
+  height: 44px;
+  background-color: transparent;
+  margin-right: 15px;
+  font-family: 'Open Sans', sans-serif; /* Usando a fonte Open Sans */
+  font-style: normal;
+  font-size: 14px;
+  line-height: 19px;
+  color: #7e7c79;
+  border-radius: 55px;
+  padding: 0px 20px;
+  border: 1px solid #ffffff;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease; /* Adicionando transições suaves */
+}
+
+.lista-categoria:focus {
+  color: #000000; /* Alterando a cor do texto quando o campo está em foco */
+  background-color: #f7b84b; /* Alterando a cor de fundo quando o campo está em foco */
+}
