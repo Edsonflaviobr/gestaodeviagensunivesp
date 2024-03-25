@@ -16,18 +16,17 @@ const Home = () => {
             <body>
                 <div className="body__content">
                     <div className="body__content--text">
-                        <Title title="Gerenciador de Viagens" color="#0f014d" />
-                        <Text text="Bem-vindo ao Gerenciador de Viagens ECO. Essa é uma aplicação web desenvolvida para facilitar a gestão de logística 
+                        <figure>
+                            <img src={logo} alt="Saúde Tour" title="Saúde Tour" />
+                        </figure>
+                        <br></br>
+                        <Text text="Bem-vindo ao Gerenciador de Viagens Saúde Tour." />
+                        <Text text="Essa aplicação web foi desenvolvida para a gestão de logística 
                                     da Secretária de Saúde do Município de Tapiratiba." />
                         <Link to="/login">
                             <button className="button--assine">Começar agora</button>
                         </Link>  
-                    </div>
-                    <div className="body__content--logo">
-                        <figure>
-                            <img src={logo} alt="Saúde Tour" title="Saúde Tour" />
-                        </figure>
-                    </div>                    
+                    </div>              
                 </div>
             </body>
 

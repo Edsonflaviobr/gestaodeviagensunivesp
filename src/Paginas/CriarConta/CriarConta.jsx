@@ -31,8 +31,7 @@ const CriarConta = () => {
                 password: formData.password,
                 confirmPassword: formData.password,
                 birthDate: formattedDate,
-                country: formData.country,
-                estado: formData.estado,
+                matricula: formData.matricula,
             });
 
             if (response.status === 201) {
@@ -76,11 +75,8 @@ const CriarConta = () => {
                         <Input type="date" placeholder="Digite sua data de nascimento" leftIcon={<MdOutlineCalendarMonth />} id="birthDate" name="birthDate" control={control} rules={{ required: 'Data é obrigatório' }} />
                         {errors.birthDate && <span>{errors.birthDate.message}</span>}
 
-                        <Input type="country" placeholder="Digite seu país" leftIcon={<MdMap />} id="country" name="country" control={control} rules={{ required: 'País é obrigatório' }} />
-                        {errors.country && <span>{errors.country.message}</span>}
-
-                        <Input type="text" placeholder="Selecione seu estado" leftIcon={<MdMap />} id="state" name="state" control={control} rules={{ required: 'Estado é obrigatório' }} />
-                        {errors.state && <span>{errors.state.message}</span>}
+                        <Input type="matricula" placeholder="Digite sua matrícula" leftIcon={<MdMap />} id="matricula" name="matricula" control={control} rules={{ required: 'Matrícula é obrigatória' }} />
+                        {errors.matricula && <span>{errors.matricula.message}</span>}
 
                         <br />
 

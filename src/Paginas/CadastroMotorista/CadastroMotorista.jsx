@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import {  React, useState } from "react";
 import { useFetch } from "../../hooks/useFetch.jsx";
 import { Input } from "../../Componentes/Input/Input.jsx";
 import { Header } from "../../Componentes/Header/Header.jsx";
@@ -8,7 +8,7 @@ const CadastroMotorista = () => {
 
   const handleCadastro = async (formData) => {
     try {
-      const response = await fetch("URL_DA_API", {
+      const response = await fetch("https://api-best-browser-games.vercel.app/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const CadastroMotorista = () => {
     tel: "",
     adress: "",
     CNH: "",
-  });
+});
 
   const handleChange = (e) => {
     const { id, value } = e.target;

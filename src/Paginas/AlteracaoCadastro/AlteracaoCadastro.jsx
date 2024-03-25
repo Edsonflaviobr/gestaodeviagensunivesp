@@ -53,8 +53,7 @@ const AlteracaoCadastro = () => {
         password: formData.password,
         confirmPassword: formData.password,
         birthDate: formattedDate,
-        country: formData.newCountry, 
-        estado: formData.newEstado, 
+        matricula: formData.newMatricula, 
         headers: {
           Authorization: `Bearer ${accessToken}`, 
         },
@@ -136,23 +135,13 @@ const AlteracaoCadastro = () => {
 
             <Input
               type="text"
-              placeholder="Digite novo País"
-              id="newCountry"
-              name="newCountry" 
+              placeholder="Digite sua matrícula"
+              id="newMatricula"
+              name="newMatricula" 
               leftIcon={<MdMap />}
               control={control}
             />
-            {errors.newCountry && <span>{errors.newCountry.message}</span>}
-
-            <Input
-              type="text"
-              placeholder="Digite novo Estado"
-              id="newEstado"
-              name="newEstado" 
-              leftIcon={<MdMap />}
-              control={control}
-            />
-            {errors.newEstado && <span>{errors.newEstado.message}</span>}
+            {errors.newMatricula && <span>{errors.newMatricula.message}</span>}
 
             <button type="submit">Enviar Alterações</button>
           </div>
