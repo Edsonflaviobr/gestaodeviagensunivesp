@@ -38,11 +38,7 @@ const Login = ({ email, password }) => {
                     sessionStorage.setItem('email', decodedToken.email);
                     sessionStorage.setItem('roles', JSON.stringify(decodedToken.roles));
 
-<<<<<<< HEAD
-                navigate('/cadastro-viagem');
-=======
                 navigate('/menu');
->>>>>>> EDSON/1.0.3
             } else {
                 alert('Usuário ou senha inválido');
             }}
