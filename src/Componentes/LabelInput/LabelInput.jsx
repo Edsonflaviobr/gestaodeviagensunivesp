@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.css';
 
 const LabelInput = ({ label, value, onChange, type = 'text' }) => {
   return (
@@ -8,7 +9,7 @@ const LabelInput = ({ label, value, onChange, type = 'text' }) => {
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={`Informe o ${label.toLowerCase()}`}
+        placeholder={`Informe ${label.toLowerCase()}`}
       />
     </div>
   );

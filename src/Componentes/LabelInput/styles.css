@@ -1,0 +1,19 @@
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px; 
+  }
+  
+  label {
+    margin-right: 10px;
+  }
+
+  input {
+    padding: 9px;
+    margin-bottom: 20px;
+    border: 1px solid #0f014d;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+  }

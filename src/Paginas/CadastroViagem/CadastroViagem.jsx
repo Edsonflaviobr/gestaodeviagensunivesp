@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './styles.css';
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'; 
 import LabelInput from '../../Componentes/LabelInput/LabelInput.jsx';
 import { api } from '../../Services/api';
 import { Link } from 'react-router-dom';
@@ -63,13 +64,23 @@ const CadastroViagem = () => {
   return (
     <>
     <Header />
-      <div className="page-container">
-        <label>Data:</label>
+        <form>
+        <div className='date-main'>
+        <label> <h3>DATA DA VIAGEM</h3></label>
         <DatePicker
           selected={dataSelecionada}
           onChange={handleDataSelecionada}
           dateFormat="dd/MM/yyyy"
+          placeholderText="Selecione uma data"
+          showYearDropdown
+          yearDropdownItemNumber={15}
+          scrollableYearDropdown
+          todayButton="Hoje"
+          minDate={new Date()}
+          maxDate={new Date(new Date().getFullYear() + 1, 11, 31)}
         />
+        </div>
+        <div className="page-container">
         <LabelInput label="Cartão do SUS" value={cartaoSus} onChange={setCartaoSus} />
         <LabelInput label="Nome do Paciente" value={nomePaciente} onChange={setNomePaciente} />
         <LabelInput label="RG do Paciente" value={rgPaciente} onChange={setRgPaciente} />
@@ -79,10 +90,8 @@ const CadastroViagem = () => {
         <LabelInput label="Observações" value={observacoes} onChange={setObservacoes} type="textarea" />
   
         <div className="acompanhante-checkbox">
-          <label>
             <input type="checkbox" checked={acompanhanteNecessario} onChange={handleAcompanhanteChange} />
             Necessita de Acompanhante
-          </label>
         </div>
   
         {acompanhanteNecessario && (
@@ -93,6 +102,7 @@ const CadastroViagem = () => {
   
         <button onClick={handleCadastrar}>Cadastrar Viagem</button>
       </div>
+      </form>
       </>
   );
 }

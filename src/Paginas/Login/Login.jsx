@@ -60,7 +60,7 @@ const Login = ({ email, password }) => {
                         <Text text="Caso ainda não possua cadastro, favor clique em 'Criar Conta'." />
                     </div>
                     <div className="body__content--form">
-                        <Text text="Acesse o Gerenciador de Viagens Saúde Tour com a sua conta." />
+                        <Text text="Acesse o Gerenciador de Viagens Saúde Tour." />
 
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <Input
