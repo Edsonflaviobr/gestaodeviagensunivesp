@@ -50,14 +50,14 @@ const CriarConta = () => {
             
             <Header />
 
-            <div className="body__content">
-                <div className="body__content--text">
-                    <Title title="Olá usúario realize seu cadastro no sistema para 
-                    ter acesso ao gerenciamento de viagens" />
+            <div className="body__contentcriarconta">
+                <div className="body__contentcriarconta--text">
+                    <Title title={<span style={{ fontWeight: 'bold', fontSize: '35px' }}>Olá usúario realize seu cadastro no sistema para 
+                    ter acesso ao gerenciamento de viagens</span>} />
                 </div>
-                <div className="body__content--form">
-                    <Text text="Ficha de Cadastro" />
-                    
+                <div className="body__contentcriarconta--form">
+                    <Text text={<span style={{ fontWeight: 'bold', fontSize: '18px' }}>FICHA DE CADASTRO</span>} />
+                    <br/>                    
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Input type="text" placeholder="Digite seu nome completo" leftIcon={<MdAccountCircle />} id="name" name="name" control={control} rules={{ required: 'Nome é obrigatório' }} />
                         {errors.name && <span>{errors.name.message}</span>}
