@@ -1,5 +1,4 @@
 import './styles.css';
-
 import { Header } from '../../Componentes/Header/Header.jsx';
 import { Title } from '../../Componentes/Title/Title.jsx';
 import { Text } from '../../Componentes/Text/Text.jsx';
@@ -47,14 +46,14 @@ const CriarConta = () => {
     return (
         <>
 
-        <div className="page-container">
+        <div>
             
             <Header />
 
             <div className="body__content">
                 <div className="body__content--text">
                     <Title title="Olá usúario realize seu cadastro no sistema para 
-                    ter acesso ao gerenciamento de viagens" color="#f7b84b" />
+                    ter acesso ao gerenciamento de viagens" />
                 </div>
                 <div className="body__content--form">
                     <Text text="Ficha de Cadastro" />

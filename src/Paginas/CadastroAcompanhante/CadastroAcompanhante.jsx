@@ -55,9 +55,16 @@ const CadastroAcompanhante = () => {
         selected={dataNascimento}
         onChange={handleDataNascimento}
         dateFormat="dd/MM/yyyy"
+        placeholderText="Selecione uma data"
+        showYearDropdown
+        yearDropdownItemNumber={15}
+        scrollableYearDropdown
+        todayButton="Hoje"
+        minDate={new Date()}
+        maxDate={new Date(new Date().getFullYear() + 1, 11, 31)}
       />
 
-      <Button onClick={handleCadastrarAcompanhante}>Cadastrar Acompanhante</Button>
+      <button onClick={handleCadastrarAcompanhante}>Cadastrar Acompanhante</button>
     </div>
     </>
   );

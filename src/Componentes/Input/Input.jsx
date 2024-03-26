@@ -10,7 +10,7 @@ const Input = ({ leftIcon, name, control, placeholder, type, rules, ...rest }) =
       <Controller
         name={name}
         control={control}
-        rules={rules}  // Adicione as regras de validação aqui
+        rules={rules} 
         render={({ field }) => (
           <input
             className='input-text'

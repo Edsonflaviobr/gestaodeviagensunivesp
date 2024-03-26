@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
 import { Header } from '../../Componentes/Header/Header.jsx';
 
+
 const CadastroViagem = () => {
   const [dataSelecionada, setDataSelecionada] = useState(null);
   const [cartaoSus, setCartaoSus] = useState('');
@@ -100,7 +101,7 @@ const CadastroViagem = () => {
           </Link>
         )}
   
-        <button onClick={handleCadastrar}>Cadastrar Viagem</button>
+        <button onClick={handleCadastrar}>Cadastrar Viagem </button>
       </div>
       </form>
       </>

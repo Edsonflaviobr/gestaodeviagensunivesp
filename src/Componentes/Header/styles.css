@@ -69,3 +69,7 @@ a {
   margin-right: 10px 0px;
   text-decoration: none;
 }
+
+header .header__content nav a {
+  margin-right: 10px; 
+}
