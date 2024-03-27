@@ -56,8 +56,7 @@ const CriarConta = () => {
                     ter acesso ao gerenciamento de viagens</span>} />
                 </div>
                 <div className="body__contentcriarconta--form">
-                    <Text text={<span style={{ fontWeight: 'bold', fontSize: '18px' }}>FICHA DE CADASTRO</span>} />
-                    <br/>                    
+                    <Text text={<span style={{ fontWeight: 'bold', fontSize: '18px' }}>FICHA DE CADASTRO</span>} />                   
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Input type="text" placeholder="Digite seu nome completo" leftIcon={<MdAccountCircle />} id="name" name="name" control={control} rules={{ required: 'Nome é obrigatório' }} />
                         {errors.name && <span>{errors.name.message}</span>}
