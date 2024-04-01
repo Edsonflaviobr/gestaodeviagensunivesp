@@ -40,12 +40,12 @@ const RecuperarSenha = () => {
             <Header />
 
             <body>
-                <div className="body__content">
-                    <div className="body__content--text">
-                        <Title title="Esqueceu a sua senha?  Informe o seu e-mail para iniciar o processo de recuperação." color="#f7b84b" />
+                <div className="body__contentRecuperarSenha">
+                    <div className="body__contentRecuperarSenha--text">
+                    <Title title={<span style={{ fontWeight: 'bold', fontSize: '35px' }}>Esqueceu a sua senha?</span>}></Title> 
                     </div>
-                    <div className="body__content--form">
-                        <Text text="Digite o seu e-mail." />
+                    <div className="body__contentRecuperarSenha--form">
+                    <span style={{ fontWeight: 'bold', fontSize: '20px' }}><br/>Informe o seu e-mail para iniciar o processo de recuperação.</span><br/>
                         
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <Input placeholder="E-mail" leftIcon={<MdEmail />} name="email"  control={control} />

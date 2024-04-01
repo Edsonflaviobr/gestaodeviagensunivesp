@@ -1,28 +1,35 @@
-.body__content {
+.body__contentRecuperarSenha {
     display: flex;
     flex-direction: row;
-    margin-top: 57px;
-    min-height: 500px;
+    margin-top: 10vh;
+    min-height: 70vh;
+    max-height: 90vh;
+    min-width: 50%;
+    max-width: 60%; 
+    margin: 0 auto; 
+    padding: 0px 20px 30px 10px; 
+    background-color: #e7e7e7;
 }
 
-.body__content .body__content--text {
+.body__contentRecuperarSenha .body__contentRecuperarSenha--text {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 1;
-    padding: 0 100px;
+    padding: 10px 100px 40px;
 }
 
-.body__content .body__content--form {
+.body__contentRecuperarSenha .body__contentRecuperarSenha--form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 1;
-    width: 50px;
-    padding: 0 50px;
+    margin-top: 30px;
+    padding:10px 60px 10px;
+    background-color: #babfd2;
 }
 
-.container {
+.containerRecuperarSenha {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -32,18 +39,18 @@
     margin-top: 120px;
 }
 
-.wrapper {
+.wrapperRecuperarSenha {
     max-width: 300px;  
 }
 
-.column {
+.columnRecuperarSenha {
     display: flex;
     justify-content: center;
     align-items: center;    
     flex: 1;
 }
 
-.row {
+.rowRecuperarSenha {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -51,24 +58,6 @@
     margin-top: 20px;
 }
 
-form {
+formRecuperarSenha {
     padding-bottom: 50px;
-}
-
-.esqueci-text {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 19px;
-    color: #7e7c79;
-}
-
-.criar-text {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 19px;
-    color: #f7b84b;
 }
