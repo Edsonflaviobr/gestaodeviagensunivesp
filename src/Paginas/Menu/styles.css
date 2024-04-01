@@ -1,54 +1,54 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Para ocupar a altura total da tela */
-    margin: 0;
-    background-color: #f2f2f2; /* Cor de fundo da página */
-  }
-  
-  /* Estilo para a tabela */
-  table {
-    border-collapse: collapse;
-  }
-  
-  /* Estilo para as células da tabela */
-  td {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  /* Estilo para as imagens dentro das células */
-  td img {
-    width: 150px;
-    height: 150px;
-    display: block; /* Para centralizar a imagem horizontalmente */
-    margin: 0 auto; /* Para centralizar a imagem horizontalmente */
-  }
-  
-  /* Estilo para os textos dentro das células */
-  td strong {
-    display: block; /* Para quebrar linha após a imagem */
-    margin-top: 10px; /* Espaço entre a imagem e o texto */
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Para ocupar a altura total da tela */
+  margin: 0;
+  background-color: #e7e7e7; /* Cor de fundo da p�gina */
+}
 
-  .disabled-text {
-    color: #808080; /* Cinza */
-  }
-  .menu-link {
-    font-family: 'Open Sans', sans-serif; /* Usando a fonte Open Sans */
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    width: 100%;
-    margin: 10px 0px;
-    color: #100f1d; /* Alterando a cor do texto para branco */
-    text-decoration: none; /* Remover sublinhado padrão */
-  }
-  
-  .menu-link:hover {
-    text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
-  }
-    
-  
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Centraliza os elementos horizontalmente */
+  justify-content: space-around; /* Centraliza os elementos verticalmente */
+  background-color: #babfd2;
+  padding:30px 60px 10px 60px;
+  margin-top: 30px;
+  flex: 1;
+  border-radius: 20px;
+}
+
+.disabled-link {
+  text-align: center;
+  color: gray;
+}
+
+.disabled-text {
+  font-size: 12px;
+  color: #808080; /* Cinza */
+}
+.menu-item {
+  flex: 1;
+  margin-right: 60px;
+  margin-left: 60px;
+  border-radius: 20px;
+  padding: 20px 10px 20px 10px;
+  background-color: #e7e7e7;
+}
+
+.menu-link {
+  font-family: 'Open Sans', sans-serif; /* Usando a fonte Open Sans */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22px;
+  width: 100%;
+  margin: 10px 0px;
+  color: #100f1d; /* Alterando a cor do texto para branco */
+  text-decoration: none; /* Remover sublinhado padr�o */
+}
+
+.menu-link:hover {
+  text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
+}
