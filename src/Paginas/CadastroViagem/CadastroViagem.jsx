@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'; 
 import { format } from 'date-fns';
 import { Header } from '../../Componentes/Header/Header.jsx';
+import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 
 const CadastroViagem = () => {
@@ -18,6 +19,7 @@ const CadastroViagem = () => {
   const [destino, setDestino] = useState('');
   const [enderecoDestino, setEnderecoDestino] = useState('');
   const [pontoPaciente, setPontoPaciente] = useState('');
+  const [motoristaDesignado, setMotoristaDesignado] = useState('');
   const [observacoes, setObservacoes] = useState('');
   const [acompanhanteNecessario, setAcompanhanteNecessario] = useState(false);
 
@@ -42,6 +44,7 @@ const CadastroViagem = () => {
             destino: formData.destino,
             enderecoDestino: formData.enderecoDestino,
             pontoPaciente: formData.pontoPaciente,
+            motoristaDesignado: formData.motoristaDesignado,
             observacoes: formData.observacoes,
             acompanhanteNecessario: formData.acompanhanteNecessario,
 
@@ -65,7 +68,8 @@ const CadastroViagem = () => {
   return (
     <>
     <Header />
-        <form>
+    <h2> Cadastrar Viagem </h2>
+      <form>
         <div className='date-main'>
         <label> <h3>DATA DA VIAGEM</h3></label>
         <DatePicker
@@ -88,6 +92,7 @@ const CadastroViagem = () => {
         <LabelInput label="Destino" value={destino} onChange={setDestino} />
         <LabelInput label="Endereço do Destino" value={enderecoDestino} onChange={setEnderecoDestino} />
         <LabelInput label="Ponto do Paciente" value={pontoPaciente} onChange={setPontoPaciente} />
+        <LabelInput label="Motorista Designado" value={motoristaDesignado} onChange={setMotoristaDesignado} />
         <LabelInput label="Observações" value={observacoes} onChange={setObservacoes} type="textarea" />
   
         <div className="acompanhante-checkbox">
@@ -104,7 +109,7 @@ const CadastroViagem = () => {
         <button onClick={handleCadastrar}>Cadastrar Viagem </button>
       </div>
       </form>
-      </>
+    </>
   );
 }
   

@@ -9,7 +9,7 @@ const LabelInput = ({ label, value, onChange, type = 'text' }) => {
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={`Informe ${label.toLowerCase()}`}
+        placeholder={`${label.toLowerCase()}`}
       />
     </div>
   );

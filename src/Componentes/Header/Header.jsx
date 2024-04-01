@@ -47,14 +47,11 @@ const Header = () => {
 
             <div className="nav__button">
               {userInfo && <Link to="/cadastro-viagem">Cadastro de Viagens</Link>}
-              {isAdmin && <Link to="/cadastro-motorista">ADM</Link>}
+              {userInfo && <Link to="/cadastro-motorista">Cadastro de Motorista</Link>}
+              {userInfo && <Link to="/consulta-viagem">Consulta</Link>}
 
               {userInfo ? (
                 <div className="user-info">
-                  <Link to="/login" onClick={handleLogout}>
-                    Sair
-                  </Link>
-
                   <figure>
                     <Link to="/alteracao-cadastro">
                       <img
@@ -65,9 +62,12 @@ const Header = () => {
                       />
                     </Link>
                   </figure>
-
                   <span className="user-name">{userInfo.name}</span>
+                  <Link to="/login" onClick={handleLogout}>
+                    Sair
+                  </Link>
                 </div>
+                
               ) : (
                 <Link to="/login">Entrar</Link>
               )}

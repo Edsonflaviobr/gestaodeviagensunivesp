@@ -73,3 +73,7 @@ a {
 header .header__content nav a {
   margin-right: 10px; 
 }
+
+header .header__content nav .nav__button .user-info span {
+  margin-right: 10px; 
+}

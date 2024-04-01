@@ -4,8 +4,8 @@
     margin-top: 57px;
     min-height: 500px;
     min-width: 140%;
-    max-width: 80%; /* Defina a largura máxima desejada */
-    margin: 0 auto; /* Isso centralizará o conteúdo na página */
+    max-width: 80%; 
+    margin: 0 auto; 
     padding: 20px 20px; 
     background-color: #e7e7e7;
 }
