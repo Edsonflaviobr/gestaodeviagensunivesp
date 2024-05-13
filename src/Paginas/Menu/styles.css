@@ -2,16 +2,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Para ocupar a altura total da tela */
+  height: 100vh; 
   margin: 0;
-  background-color: #e7e7e7; /* Cor de fundo da página */
+  background-color: #e7e7e7; 
 }
 
 .container {
   display: flex;
   flex-direction: row;
-  align-items: flex-start; /* Centraliza os elementos horizontalmente */
-  justify-content: space-around; /* Centraliza os elementos verticalmente */
+  align-items: flex-startcenter; 
+  justify-content: space-around; 
   background-color: #babfd2;
   padding:30px 60px 10px 60px;
   margin-top: 30px;
@@ -26,7 +26,7 @@ body {
 
 .disabled-text {
   font-size: 12px;
-  color: #808080; /* Cinza */
+  color: #808080; 
 }
 .menu-item {
   flex: 1;
@@ -38,17 +38,17 @@ body {
 }
 
 .menu-link {
-  font-family: 'Open Sans', sans-serif; /* Usando a fonte Open Sans */
+  font-family: 'Open Sans', sans-serif; 
   font-style: normal;
   font-weight: 400;
   font-size: 19px;
   line-height: 22px;
   width: 100%;
   margin: 10px 0px;
-  color: #100f1d; /* Alterando a cor do texto para branco */
-  text-decoration: none; /* Remover sublinhado padrão */
+  color: #100f1d; 
+  text-decoration: none; 
 }
 
 .menu-link:hover {
-  text-decoration: underline; /* Adicionar sublinhado ao passar o mouse */
+  text-decoration: underline;
 }

@@ -2,13 +2,13 @@ import React from 'react';
 import './styles.css';
 import { Header } from '../../Componentes/Header/Header.jsx';
 import { Title } from '../../Componentes/Title/Title.jsx';
-import { Text } from '../../Componentes/Text/Text.jsx';
 import { Input } from '../../Componentes/Input/Input.jsx';
 import { Button } from '../../Componentes/Button/Button.jsx';
 import { MdEmail } from 'react-icons/md'
 import { useForm } from "react-hook-form";
 import { api } from '../../Services/api';
 import { useNavigate } from 'react-router-dom';
+import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 
 const RecuperarSenha = () => {
@@ -57,7 +57,7 @@ const RecuperarSenha = () => {
                     </div>                    
                 </div>
             </body>
-
+        <Footer />
   
         </>
     )

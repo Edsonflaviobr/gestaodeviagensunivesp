@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import './styles.css';
 import iconMotorista from '../../Assets/Imagens/motorista.png';
 import iconViagem from '../../Assets/Imagens/viagem.png';
 import iconUsuario from '../../Assets/Imagens/gerir-usuario.png';
 import { Header } from '../../Componentes/Header/Header.jsx';
-import { Title } from '../../Componentes/Title/Title.jsx';
-import { Text } from '../../Componentes/Text/Text.jsx';
+import { Footer } from '../../Componentes/Footer/Footer.jsx'
+
 
 const Menu = ({ isAdmin }) => { // Recebe uma propriedade isAdmin para indicar se o usuÃ¡rio Ã© ADM ou nÃ£o
 
@@ -31,7 +30,7 @@ const Menu = ({ isAdmin }) => { // Recebe uma propriedade isAdmin para indicar s
                 <div></div>
                 <div class="menu-item">
                     {isAdmin ? (
-                        <a href="/gerir-usuarios">
+                        <a href="/consulta-admistrador">
                             <img src={iconUsuario} alt="usuario" width="150" height="150" />
                             <br />
                             <strong class="menu-link">Gerir Usuários</strong>
@@ -47,6 +46,7 @@ const Menu = ({ isAdmin }) => { // Recebe uma propriedade isAdmin para indicar s
                     )}
                 </div>
             </div>
+            <Footer />
         </div>
     );
     

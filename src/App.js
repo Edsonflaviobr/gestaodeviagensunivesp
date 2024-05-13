@@ -12,6 +12,8 @@ import { CadastroMotorista }  from "./Paginas/CadastroMotorista/CadastroMotorist
 import { CadastroAcompanhante } from "./Paginas/CadastroAcompanhante/CadastroAcompanhante.jsx";
 import { ConsultaViagem } from "./Paginas/ConsultarViagem/ConsultarViagem.jsx"
 import { Menu } from "./Paginas/Menu/Menu.jsx"
+import { ConsultaAdministrador } from "./Paginas/ConsultaAdministrador/ConsultaAdministrador.jsx";
+
 function App() {
   return (
     <div className="App">
@@ -28,6 +30,7 @@ function App() {
           <Route path="/consulta-viagem" element={<ConsultaViagem />} />
           <Route path="/alteracao-cadastro" element={<AlteracaoCadastro />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/consulta-administrador" element={<ConsultaAdministrador />} />
         </Routes>
       </BrowserRouter>
     </div>

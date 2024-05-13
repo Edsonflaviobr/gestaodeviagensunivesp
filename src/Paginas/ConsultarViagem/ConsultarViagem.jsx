@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import './styles.css'
 import { api } from '../../Services/api';
 import { Link, Navigate } from 'react-router-dom';
 import { Header } from '../../Componentes/Header/Header';
-import { Text } from '../../Componentes/Text/Text'
+import { Text } from '../../Componentes/Text/Text';
+import LabelInput from '../../Componentes/LabelInput/LabelInput.jsx';
+import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 const ConsultaViagem = () => {
   const [consulta, setConsulta] = useState('');
@@ -52,34 +55,19 @@ const ConsultaViagem = () => {
   return (
     <div>
     <Header />
+    <div className='consul'>
+    <form>
     <h2>Consultar Viagens</h2>
-    <div>
-      <label htmlFor="consultaNomePaciente">Nome do Paciente:</label>
-      <input type="text" id="consultaNomePaciente" value={consulta} onChange={handleConsultaChange} />
-    </div>
-    <div>
-      <label htmlFor="consultaCartaoSus">Cartão do SUS:</label>
-      <input type="text" id="consultaCartaoSus" value={consulta} onChange={handleConsultaChange} />
-    </div>
-    <div>
-      <label htmlFor="consultaNomeMotorista">Nome do Motorista:</label>
-      <input type="text" id="consultaNomeMotorista" value={consulta} onChange={handleConsultaChange} />
-    </div>
-    <div>
-      <label htmlFor="consultaPlacaVeiculo">Placa do Veículo:</label>
-      <input type="text" id="consultaPlacaVeiculo" value={consulta} onChange={handleConsultaChange} />
-    </div>
-    <div>
-      <label htmlFor="consultaDataViagem">Data da Viagem:</label>
-      <input type="text" id="consultaDataViagem" value={consulta} onChange={handleConsultaChange} />
-    </div>
+      <LabelInput label="Nome do Paciente" type="text" id="consultaNome" value={consulta} onChange={handleConsultaChange} />
+      <LabelInput label="RG do paciente" type="text" id="consultaRG" value={consulta} onChange={handleConsultaChange} />
+      <LabelInput label="Nome do Motorista" type="text" id="consultaNomeMotorista" value={consulta} onChange={handleConsultaChange} />
+      <LabelInput label="Data da Viagem" type="date" id="consultaDataViagem" value={consulta} onChange={handleConsultaChange} />
     <ul>
       {viagens.map((viagem) => (
         <li key={viagem.id} onClick={() => handleViagemSelecionada(viagem)}>
           <div>{viagem.nomePaciente}</div>
-          <div>{viagem.cartaoSus}</div>
+          <div>{viagem.rgPaciente}</div>
           <div>{viagem.nomeMotorista}</div>
-          <div>{viagem.placaVeiculo}</div>
           <div>{viagem.dataViagem}</div>
         </li>
       ))}
@@ -94,6 +82,9 @@ const ConsultaViagem = () => {
     <Link to="/CadastroViagem">
       <button>Consultar Viagem</button>
     </Link>
+  </form>
+  </div>
+  <Footer />
   </div>
 );
 };

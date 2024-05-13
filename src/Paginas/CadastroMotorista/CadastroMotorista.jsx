@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import './styles.css'
 import 'react-datepicker/dist/react-datepicker.css'; 
 import LabelInput from '../../Componentes/LabelInput/LabelInput.jsx';
 import { api } from '../../Services/api';
 import { useNavigate } from 'react-router-dom'; 
 import { Header } from '../../Componentes/Header/Header.jsx';
+import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 
 const CadastroMotorista = () => {
@@ -11,8 +13,6 @@ const CadastroMotorista = () => {
   const [cnhMotorista, setCnhMotorista] = useState('');
   const [matriculaMotorista, setMatriculaMotorista] = useState('');
   const [telMotorista, setTelMotorista] = useState('');
-  const [adressMotorista, setAdressMotorista] = useState('');
-  const [observacoes, setObservacoes] = useState('');
 
 
   const navigate = useNavigate();
@@ -24,7 +24,6 @@ const CadastroMotorista = () => {
             cnhMotorista: formData.cnhMotorista,
             matriculaMotorista: formData.matriculaMotorista,
             telMotorista: formData.telMotorista,
-            adressMotorista: formData.adressMotorista,
         });
         if (response.status === 201) {
           alert ('Motorista Cadastrado com sucesso!')
@@ -39,20 +38,20 @@ const CadastroMotorista = () => {
     };
 
   return (
-    <>
+    <div>
     <Header />
-        <form>
-        <div className="page-container">
-        <LabelInput label="Nome do Motorista" value={nameMotorista} onChange={setNameMotorista} />
-        <LabelInput label="CNH do Motorista" value={cnhMotorista} onChange={setCnhMotorista} />
-        <LabelInput label="Matrícula do Motorista" value={matriculaMotorista} onChange={setMatriculaMotorista} />
-        <LabelInput label="Telefone do Motorista" value={telMotorista} onChange={setTelMotorista} />
-        <LabelInput label="Endereço do Destino" value={adressMotorista} onChange={setAdressMotorista} />
-        <LabelInput label="Observações" value={observacoes} onChange={setObservacoes} type="textarea" />
+    <div className='contain-moto'>
+    <form>
+    <h2>Cadastro de Motorista</h2>
+        <LabelInput label="Nome" value={nameMotorista} onChange={setNameMotorista} />
+        <LabelInput label="CNH" value={cnhMotorista} onChange={setCnhMotorista} />
+        <LabelInput label="Matrícula" value={matriculaMotorista} onChange={setMatriculaMotorista} />
+        <LabelInput label="Telefone" value={telMotorista} onChange={setTelMotorista} />
         <button onClick={handleCadastrar}>Cadastrar Motorista </button>
-      </div>
-      </form>
-      </>
+    </form>
+    </div>
+    <Footer />
+    </div>
   );
 }
   

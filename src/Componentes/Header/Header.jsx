@@ -49,6 +49,7 @@ const Header = () => {
               {userInfo && <Link to="/cadastro-viagem">Cadastro de Viagens</Link>}
               {userInfo && <Link to="/cadastro-motorista">Cadastro de Motorista</Link>}
               {userInfo && <Link to="/consulta-viagem">Consulta</Link>}
+              {userInfo && <Link to="/consulta-administrador">Adm</Link>}  
 
               {userInfo ? (
                 <div className="user-info">

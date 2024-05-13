@@ -1,35 +1,27 @@
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
 import LabelInput from '../../Componentes/LabelInput/LabelInput.jsx';
-import { Button } from '../../Componentes/Button/Button.jsx';
+import './styles.css'
 import { api } from '../../Services/api';
 import { useNavigate } from 'react-router-dom';
-import { format } from 'date-fns';
-import { useFetch } from '../../hooks/useFetch.jsx';
 import { Header } from '../../Componentes/Header/Header.jsx';
+import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 const CadastroAcompanhante = () => {
   const [nomeAcompanhante, setNomeAcompanhante] = useState('');
   const [rgAcompanhante, setRgAcompanhante] = useState('');
-  const [cartaoSusAcompanhante, setCartaoSusAcompanhante] = useState('');
-  const [dataNascimento, setDataNascimento] = useState(null);
+  const [adressAcompanhante, setAdressAcompanhante] = useState('');
+  const [pontoAcompanhante, sePontoAcompanhante] = useState('');
+
   const navigate = useNavigate();
-
-  const { loading, data } = useFetch('https://api-best-browser-games.vercel.app/users');
-
-  const handleDataNascimento = (date) => {
-    setDataNascimento(date);
-  };
 
   const handleCadastrarAcompanhante = async () => {
     try {
-      const formattedDate = format(dataNascimento, 'ddMMyyyy');
 
       const response = await api.post('https://api-best-browser-games.vercel.app/users', {
         nameAcompanhante: nomeAcompanhante,
         rgAcompanhante: rgAcompanhante,
-        cartaoSusAcompanhante: cartaoSusAcompanhante,
-        dataNascimento: formattedDate,
+        adressAcompanhante: adressAcompanhante,
+        pontoAcompanhante: pontoAcompanhante,
       });
 
       if (response.status === 201) {
@@ -43,31 +35,22 @@ const CadastroAcompanhante = () => {
   }; 
 
   return (
-    <>
+    <div>
     <Header />
-    <div className="cadastro-container">
-      <LabelInput label="Nome do Acompanhante" value={nomeAcompanhante} onChange={e => setNomeAcompanhante(e.target.value)} />
-      <LabelInput label="RG do Acompanhante" value={rgAcompanhante} onChange={e => setRgAcompanhante(e.target.value)} />
-      <LabelInput label="Cartão SUS do Acompanhante" value={cartaoSusAcompanhante} onChange={e => setCartaoSusAcompanhante(e.target.value)} />
-
-      <label>Data de Nascimento:</label>
-      <DatePicker
-        selected={dataNascimento}
-        onChange={handleDataNascimento}
-        dateFormat="dd/MM/yyyy"
-        placeholderText="Selecione uma data"
-        showYearDropdown
-        yearDropdownItemNumber={15}
-        scrollableYearDropdown
-        todayButton="Hoje"
-        minDate={new Date()}
-        maxDate={new Date(new Date().getFullYear() + 1, 11, 31)}
-      />
-
+    <div className='acomp'>
+    <form>
+    <h2> Cadastro de Acompanhante </h2>
+      <LabelInput label="Nome" value={nomeAcompanhante} onChange={e => setNomeAcompanhante(e.target.value)} />
+      <LabelInput label="Documento" value={rgAcompanhante} onChange={e => setRgAcompanhante(e.target.value)} />
+      <LabelInput label="Endereço" value={adressAcompanhante} onChange={e => setAdressAcompanhante(e.target.value)} />
+      <LabelInput label="Ponto" value={pontoAcompanhante} onChange={e => sePontoAcompanhante(e.target.value)} />
       <button onClick={handleCadastrarAcompanhante}>Cadastrar Acompanhante</button>
+    </form>  
     </div>
-    </>
+    <Footer />
+    </div>
   );
 };
 
 export { CadastroAcompanhante }
+

@@ -1,12 +1,12 @@
 .body__contentcriarconta {
     display: flex;
     flex-direction: row;
-    margin-top: 10vh;
-    min-height: 70vh;
-    max-height: 90vh;
+    min-height: 50%;
+    max-height: 90%;
     min-width: 50%;
-    max-width: 60%; 
-    margin: 0 auto; 
+    max-width: 80%; 
+    margin: auto;
+    margin-top: 100px;
     padding: 0px 20px 30px 10px; 
     background-color: #e7e7e7;
 }
@@ -24,10 +24,14 @@
     flex-direction: column;
     justify-content: center;
     flex: 1;
-    
     margin-top: 30px;
     padding:10px 60px 10px;
     background-color: #babfd2;
+}
+
+.body__contentcriarconta .body__contentcriarconta--form span {
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .containercriarconta {
@@ -62,5 +66,3 @@
 form {
     padding-bottom: 30px;
 }
-
-

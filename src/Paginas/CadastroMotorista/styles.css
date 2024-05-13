@@ -1,4 +1,4 @@
-.acomp {
+.contain-moto {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,19 +9,22 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   width: 100%;
   margin-top: 200px;
-  margin-bottom: 80px;
+  margin-bottom: 80px;;
 }
-
+  
 form {
   display: flex;
   flex-direction: column;
   padding: auto;
+  padding-top: 0px;
 }
-
+  
 label {
+  margin-bottom: 10px;
   color: #060020;
+  margin-left: 20px;
 }
-
+  
 button {
   padding: 10px 20px;
   background-color: #0f014d;
@@ -33,7 +36,7 @@ button {
   width: 100%;
   margin-top: 10px;
 }
-
+  
 button:hover {
   background-color: #21204a;
 }

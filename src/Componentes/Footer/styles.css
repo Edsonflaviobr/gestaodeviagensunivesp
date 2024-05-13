@@ -1,8 +1,9 @@
 footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background: #0f0050;
+    padding: 20px; 
+    color: white; 
 }
-
-footer p {
-    color: cbcbcb;
-}
-  

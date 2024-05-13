@@ -1,4 +1,4 @@
-.body__content {
+.log {
     display: flex;
     flex-direction: row;
     margin-top: 57px;
@@ -10,7 +10,7 @@
     background-color: #e7e7e7;
 }
 
-.body__content .body__content--text {
+.log--text {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,15 +18,21 @@
     padding: 0 100px;
 }
 
-.body__content .body__content--form {
+.log--log {
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex: 1;
     width: 50px;
-    padding: 50px 0px;
     background-color: #babfd2;
 }
+
+.log--log span {
+    color: #0f014d;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
 
 .container {
     display: flex;
@@ -68,11 +74,7 @@
 }
 
 form {
-  padding-bottom: 50px;
+  padding: 50px;
 }
 
-span {
-    color: #0f014d;
-    font-size: 14px;
-    margin-top: 5px;
-}
+

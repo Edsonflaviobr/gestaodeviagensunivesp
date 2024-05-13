@@ -1,12 +1,12 @@
 .form-group {
-    display: flex;
+    display: block;
     flex-direction: row;
     align-items: center;
     margin-bottom: 10px; 
   }
   
   label {
-    margin-right: 10px;
+    font-weight: bold;
   }
 
   input {

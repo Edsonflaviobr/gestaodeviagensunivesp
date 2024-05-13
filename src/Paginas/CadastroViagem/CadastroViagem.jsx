@@ -13,7 +13,7 @@ import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 const CadastroViagem = () => {
   const [dataSelecionada, setDataSelecionada] = useState(null);
-  const [cartaoSus, setCartaoSus] = useState('');
+  const [horaSelecionada, setHoraSelecionada] = useState(null);
   const [nomePaciente, setNomePaciente] = useState('');
   const [rgPaciente, setRgPaciente] = useState('');
   const [destino, setDestino] = useState('');
@@ -30,25 +30,51 @@ const CadastroViagem = () => {
     setDataSelecionada(date);
   };
 
+  const handleHoraSelecionada = (time) => {
+    setHoraSelecionada(time);
+  };
+
+  const verificarDisponibilidade = async () => {
+    try {
+      const response = await api.get(`/verificar-disponibilidade?data=${dataSelecionada}&hora=${horaSelecionada}`);
+      return response.data.disponivel;
+    } catch (error) {
+      console.error('Erro ao verificar disponibilidade:', error);
+      return false; 
+    }
+  };
+
+
+
   const handleCadastrar = async (formData) => {
     try {
+        if (!dataSelecionada || !horaSelecionada) {
+          alert('Por favor, selecione uma data e hora.');
+          return;
+        }
+  
+        const disponivel = await verificarDisponibilidade();
+        if (!disponivel) {
+          alert('Data e hora selecionadas não estão disponíveis. Por favor, escolha outra.');
+          return;
+        }
 
-        const formattedDate = format(new Date(formData.dataNascimento), 'ddMMyyyy');
+        const formattedDate = format(new Date(dataSelecionada), 'ddMMyyyy');
 
-        const response = await api.post('https://api-best-browser-games.vercel.app/users', {
-            dataSelecionada: formData.dataSelecionada,
-            cartaoSus: formData.cartaoSus,
-            namePaciente: formData.namePaciente,
-            rgPaciente: formData.rgPaciente,
-            dataNascimento: formattedDate,
-            destino: formData.destino,
-            enderecoDestino: formData.enderecoDestino,
-            pontoPaciente: formData.pontoPaciente,
-            motoristaDesignado: formData.motoristaDesignado,
-            observacoes: formData.observacoes,
-            acompanhanteNecessario: formData.acompanhanteNecessario,
+        const formData = {
+          dataSelecionada,
+          nomePaciente,
+          rgPaciente,
+          destino,
+          enderecoDestino,
+          pontoPaciente,
+          motoristaDesignado,
+          observacoes,
+          acompanhanteNecessario,
+        };
 
-        });
+        const response = await api.post('https://api-best-browser-games.vercel.app/users', formData);
+  
         if (response.status === 201) {
           alert ('Viagem Cadastrar com sucesso!')
           navigate ('/')
@@ -67,37 +93,49 @@ const CadastroViagem = () => {
 
   return (
     <>
+ 
     <Header />
-    <h2> Cadastrar Viagem </h2>
-      <form>
-        <div className='date-main'>
-        <label> <h3>DATA DA VIAGEM</h3></label>
-        <DatePicker
-          selected={dataSelecionada}
-          onChange={handleDataSelecionada}
-          dateFormat="dd/MM/yyyy"
-          placeholderText="Selecione uma data"
-          showYearDropdown
-          yearDropdownItemNumber={15}
-          scrollableYearDropdown
-          todayButton="Hoje"
-          minDate={new Date()}
-          maxDate={new Date(new Date().getFullYear() + 1, 11, 31)}
-        />
-        </div>
-        <div className="page-container">
-        <LabelInput label="Cartão do SUS" value={cartaoSus} onChange={setCartaoSus} />
-        <LabelInput label="Nome do Paciente" value={nomePaciente} onChange={setNomePaciente} />
-        <LabelInput label="RG do Paciente" value={rgPaciente} onChange={setRgPaciente} />
-        <LabelInput label="Destino" value={destino} onChange={setDestino} />
-        <LabelInput label="Endereço do Destino" value={enderecoDestino} onChange={setEnderecoDestino} />
-        <LabelInput label="Ponto do Paciente" value={pontoPaciente} onChange={setPontoPaciente} />
-        <LabelInput label="Motorista Designado" value={motoristaDesignado} onChange={setMotoristaDesignado} />
-        <LabelInput label="Observações" value={observacoes} onChange={setObservacoes} type="textarea" />
   
-        <div className="acompanhante-checkbox">
-            <input type="checkbox" checked={acompanhanteNecessario} onChange={handleAcompanhanteChange} />
-            Necessita de Acompanhante
+    <div className='contain-main'>
+      <form>
+      <h2> Cadastro de Viagem </h2>
+      <div className='horario'>
+        <label> Data </label>
+            <DatePicker
+              selected={dataSelecionada}
+              onChange={handleDataSelecionada}
+              dateFormat="dd/MM/yyyy"
+              placeholderText="Selecione uma data"
+              showYearDropdown
+              yearDropdownItemNumber={15}
+              scrollableYearDropdown
+              todayButton="Hoje"
+              minDate={new Date()}
+              maxDate={new Date(new Date().getFullYear() + 1, 11, 31)}
+            />
+        <label> Hora </label>
+            <DatePicker
+              selected={horaSelecionada}
+              onChange={handleHoraSelecionada}
+              showTimeSelect
+              showTimeSelectOnly
+              timeIntervals={15}
+              timeCaption="Hora"
+              dateFormat="HH:mm"
+              placeholderText="Selecione uma hora"
+            />
+      </div>  
+          <LabelInput label="Nome do Paciente" value={nomePaciente} onChange={setNomePaciente} />
+          <LabelInput label="RG do Paciente" value={rgPaciente} onChange={setRgPaciente} />
+          <LabelInput label="Destino" value={destino} onChange={setDestino} />
+          <LabelInput label="Endereço do Destino" value={enderecoDestino} onChange={setEnderecoDestino} />
+          <LabelInput label="Ponto do Paciente" value={pontoPaciente} onChange={setPontoPaciente} />
+          <LabelInput label="Motorista Designado" value={motoristaDesignado} onChange={setMotoristaDesignado} />
+          <LabelInput label="Observações" value={observacoes} onChange={setObservacoes} type="textarea" />
+  
+        <div>
+          <label>Necessita de Acompanhante </label>
+          <input type="checkbox" checked={acompanhanteNecessario} onChange={handleAcompanhanteChange} />
         </div>
   
         {acompanhanteNecessario && (
@@ -106,10 +144,11 @@ const CadastroViagem = () => {
           </Link>
         )}
   
-        <button onClick={handleCadastrar}>Cadastrar Viagem </button>
-      </div>
+        <button type="button" onClick={handleCadastrar}>Cadastrar Viagem </button>
       </form>
-    </>
+    </div>
+    <Footer />
+  </>
   );
 }
   

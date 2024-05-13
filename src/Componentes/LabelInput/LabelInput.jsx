@@ -4,7 +4,7 @@ import './styles.css';
 const LabelInput = ({ label, value, onChange, type = 'text' }) => {
   return (
     <div className="form-group">
-      <label>{label}:</label>
+      <label>{label}</label>
       <input
         type={type}
         value={value}

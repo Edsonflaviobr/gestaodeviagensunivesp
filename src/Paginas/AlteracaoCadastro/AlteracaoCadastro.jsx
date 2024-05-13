@@ -5,10 +5,12 @@ import { Title } from '../../Componentes/Title/Title.jsx';
 import { Text } from '../../Componentes/Text/Text.jsx';
 import { useForm } from 'react-hook-form';
 import { Input } from '../../Componentes/Input/Input.jsx';
+import { Button } from '../../Componentes/Button/Button.jsx';
 import { MdAccountCircle, MdEmail, MdLock, MdOutlineCalendarMonth, MdMap } from 'react-icons/md'
 import { api } from '../../Services/api';
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
+import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 const AlteracaoCadastro = () => {
   const navigate = useNavigate();
@@ -71,83 +73,44 @@ const AlteracaoCadastro = () => {
   };
 
   return (
-    <div className="page-container">
-      <Header />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="body__content">
-          <div className="body__content--text">
-            <Title title="Altere seus dados cadastrados!" color="#f7b84b" />
-          </div>
-          <div className="body__content--form">
-            <Text text="Ficha de Cadastro - Alteração" />
+    <>
+            
+            <Header />
 
-            <Input
-              type="text"
-              placeholder="Digite novo Nome"
-              id="newName"
-              name="newName"
-              leftIcon={<MdAccountCircle />}
-              control={control}
-            />
-            {errors.newName && <span>{errors.newName.message}</span>}
+            <div className="body__contentcriarconta">
+                <div className="body__contentcriarconta--text">
+                    <Title title={<span>Usúario realize seu cadastro no sistema novamente alterando os itens necessários</span>} />
+                </div>
+                <div className="body__contentcriarconta--form">
+                    <Text text= {<span> ALTERAÇÃO DE CADASTRO </span>} />                   
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <Input type="text" placeholder="Digite seu nome completo" leftIcon={<MdAccountCircle />} id="name" name="name" control={control} rules={{ required: 'Nome é obrigatório' }} />
+                        {errors.nome && <span>{errors.nome.message}</span>}
 
-            <Input
-              type="text"
-              placeholder="Digite novo E-mail"
-              id="newEmail"
-              name="newEmail"
-              leftIcon={<MdEmail />}
-              control={control}
-            />
-            {errors.newEmail && <span>{errors.newEmail.message} </span>}
+                        <Input type="email" placeholder="Digite seu e-mail" leftIcon={<MdEmail />} id="email" name="email" control={control} rules={{ required: 'E-mail é obrigatório' }} />
+                        {errors.email && <span>{errors.email.message}</span>}
 
-            <Input
-              type="password"
-              placeholder="Digite sua senha"
-              id="password"
-              name="password"
-              leftIcon={<MdLock />}
-              control={control}
-              rules={{ required: 'Senha é obrigatória' }} 
-            />
-            {errors.password && <span>{errors.password.message}</span>}
+                        <Input type="password" placeholder="Digite uma senha" leftIcon={<MdLock />} id="password" name="password" control={control} pattern="[0-9]*" rules={{ required: 'Senha é obrigatório' }} />
+                        {errors.senha && <span>{errors.senha.message}</span>}
 
-            <Input
-              type="password"
-              placeholder="Confirme sua senha"
-              id="confirmPassword"
-              name="confirmPassword"
-              leftIcon={<MdLock />}
-              control={control}
-              rules={{ required: 'Confirmação de senha é obrigatória', validate: value => value === watch('password') || 'As senhas não coincidem' }} // Adicione regras de validação conforme necessário
-            />
-            {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
+                        <Input type="password" placeholder="Confirme sua senha" leftIcon={<MdLock />} id="confirmPassword" name="confirmPassword" control={control} pattern="[0-9]*" rules={{ required: 'Senha é obrigatório' }} />
+                        {errors.confirma && <span>{errors.confirma.message}</span>}
 
-            <Input
-              type="date"
-              placeholder="Digite sua data de nascimento"
-              id="newBirthDate"
-              name="newBirthDate" 
-              leftIcon={<MdOutlineCalendarMonth />}
-              control={control}
-            />
-            {errors.newBirthDate && <span>{errors.newBirthDate.message}</span>}
+                        <Input type="text" placeholder="Digite sua data de nascimento" leftIcon={<MdOutlineCalendarMonth />} id="birthDate" name="birthDate" control={control} rules={{ required: 'Data é obrigatório' }} />
+                        {errors.data && <span>{errors.data.message}</span>}
 
-            <Input
-              type="text"
-              placeholder="Digite sua matrícula"
-              id="newMatricula"
-              name="newMatricula" 
-              leftIcon={<MdMap />}
-              control={control}
-            />
-            {errors.newMatricula && <span>{errors.newMatricula.message}</span>}
+                        <Input type="matricula" placeholder="Digite sua matrícula" leftIcon={<MdMap />} id="matricula" name="matricula" control={control} rules={{ required: 'Matrícula é obrigatória' }} />
+                        {errors.matricula && <span>{errors.matricula.message}</span>}
 
-            <button type="submit">Enviar Alterações</button>
-          </div>
-        </div>
-      </form>
-    </div>
+                        <Button title="Cadastrar" variant="secondary" type="submit"/>
+                    </form>
+                                              
+                </div>                 
+            </div>
+
+            <Footer />
+  
+        </>
   );
 };
 

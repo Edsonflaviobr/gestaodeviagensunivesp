@@ -1,46 +1,34 @@
-.acompanhante-checkbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  color: #060021;
-}
-
-.page-container {
+.contain-main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #babfd2;
-  padding: 40px;
   border-radius: 10px;
+  padding: 60px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   width: 100%;
-  margin: 20px auto 0; 
+  margin-top: 600px;
+  margin-bottom: 80px;
 }
 
-.date-main {
-  display: flex;
-  flex-direction: row;
+.horario {
+  display: inline-block;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: #7c90d8;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  width: 100%;
-  margin: 350px auto 0;
+  margin-right: 0px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-form {
+.contain-main form {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 400px;
+  padding: auto;
+  padding-top: 0px;
 }
 
 label {
-  margin-bottom: 10px;
   color: #060020;
 }
 
@@ -53,6 +41,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   width: 100%;
+  margin-top: 10px;
 }
 
 button:hover {

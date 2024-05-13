@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './styles.css';
-import logo from '../../Assets/Imagens/banner-best.png';
+import tapi from '../../Assets/Imagens/tapi.jpeg'
 import { Header } from '../../Componentes/Header/Header.jsx';
-import { Title } from '../../Componentes/Title/Title.jsx';
 import { Text } from '../../Componentes/Text/Text.jsx';
+
 
 const Home = () => {
 
@@ -17,7 +17,7 @@ const Home = () => {
                 <div className="body__content">
                     <div className="body__content--text">
                         <figure>
-                            <img src={logo} alt="Saúde Tour" title="Saúde Tour" />
+                            <img src={tapi} alt="Bandeira Tapiratiba" title="Bandeira Tapiratiba" />
                         </figure>
                         <br></br>
                         <Text text="Bem-vindo ao Gerenciador de Viagens Saúde Tour." />
@@ -30,7 +30,6 @@ const Home = () => {
                 </div>
             </body>
 
-  
         </>
     )
 }

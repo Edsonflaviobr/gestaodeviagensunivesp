@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { jwtDecode } from 'jwt-decode';
 import './styles.css';
-
 import { Header } from '../../Componentes/Header/Header.jsx';
 import { Title } from '../../Componentes/Title/Title.jsx';
 import { Text } from '../../Componentes/Text/Text.jsx';
@@ -13,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { api } from '../../Services/api';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 const Login = ({ email, password }) => {
     const navigate = useNavigate();
@@ -54,13 +54,13 @@ const Login = ({ email, password }) => {
             <Header />
 
             <body>
-                <div className="body__content">
-                    <div className="body__content--text">
+                <div className="log">
+                    <div className="log--text">
                         <Title title="Login..." color="#0f014d" />
                         <Text text="Caso ainda não possua cadastro, favor clique em 'Criar Conta'." />
                     </div>
-                    <div className="body__content--form">
-                    <Text text={<span style={{ fontWeight: 'bold', fontSize: '15px' }}>Acesse o Gerenciador de Viagens Saúde Tour.</span>} />
+                    <div className="log--log">
+                    <Text text={<span>Acesse o Gerenciador de Viagens Saúde Tour.</span>} />
 
 
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -107,6 +107,7 @@ const Login = ({ email, password }) => {
                     </div>
                 </div>
             </body>
+            <Footer />
         </>
     );
 }
