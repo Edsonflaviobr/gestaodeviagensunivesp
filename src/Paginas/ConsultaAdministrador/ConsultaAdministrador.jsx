@@ -14,7 +14,7 @@ const ConsultaAdministrador = () => {
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const response = await api.get(`https://api-best-browser-games.vercel.app/usuarios?nome=${consultaUsuario}`);
+        const response = await api.get(`usuario?nome=${consultaUsuario}`);
         setUsuarios(response.data);
       } catch (error) {
         console.error('Erro ao buscar usuários:', error);

@@ -15,7 +15,7 @@ const ConsultaViagem = () => {
   useEffect(() => {
     const fetchViagens = async () => {
       try {
-        const response = await api.get('https://api-best-browser-games.vercel.app/users');
+        const response = await api.get('viagem');
         setViagens(response.data);
       } catch (error) {
         console.error('Erro ao buscar viagens:', error);
@@ -39,7 +39,7 @@ const ConsultaViagem = () => {
 
   const handleDeletarViagem = async () => {
     try {
-      const response = await api.delete(`https://api-best-browser-games.vercel.app/users/${viagemSelecionada.id}`);
+      const response = await api.delete(`viagem/${viagemSelecionada.id}`);
       if (response.status === 204) {
         setViagens(viagens.filter((viagem) => viagem.id !== viagemSelecionada.id));
         setViagemSelecionada(null);

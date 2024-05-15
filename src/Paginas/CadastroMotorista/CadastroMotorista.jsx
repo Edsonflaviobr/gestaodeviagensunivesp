@@ -9,21 +9,21 @@ import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 
 const CadastroMotorista = () => {
-  const [nameMotorista, setNameMotorista] = useState('');
-  const [cnhMotorista, setCnhMotorista] = useState('');
-  const [matriculaMotorista, setMatriculaMotorista] = useState('');
-  const [telMotorista, setTelMotorista] = useState('');
+  const [nome, setNameMotorista] = useState('');
+  const [cnh, setCnhMotorista] = useState('');
+  const [matricula, setMatriculaMotorista] = useState('');
+  const [telefone, setTelMotorista] = useState('');
 
 
   const navigate = useNavigate();
 
   const handleCadastrar = async (formData) => {
     try {
-        const response = await api.post('https://api-best-browser-games.vercel.app/users', {
-            nameMotorista: formData.nameMotorista,
-            cnhMotorista: formData.cnhMotorista,
-            matriculaMotorista: formData.matriculaMotorista,
-            telMotorista: formData.telMotorista,
+        const response = await api.post('motorista', {
+            nome: formData.nome,
+            cnh: formData.cnh,
+            matricula: formData.matricula,
+            telefone: formData.tel,
         });
         if (response.status === 201) {
           alert ('Motorista Cadastrado com sucesso!')
@@ -43,10 +43,10 @@ const CadastroMotorista = () => {
     <div className='contain-moto'>
     <form>
     <h2>Cadastro de Motorista</h2>
-        <LabelInput label="Nome" value={nameMotorista} onChange={setNameMotorista} />
-        <LabelInput label="CNH" value={cnhMotorista} onChange={setCnhMotorista} />
-        <LabelInput label="Matrícula" value={matriculaMotorista} onChange={setMatriculaMotorista} />
-        <LabelInput label="Telefone" value={telMotorista} onChange={setTelMotorista} />
+        <LabelInput label="Nome" value={nome} onChange={setNameMotorista} />
+        <LabelInput label="CNH" value={cnh} onChange={setCnhMotorista} />
+        <LabelInput label="Matrícula" value={matricula} onChange={setMatriculaMotorista} />
+        <LabelInput label="Telefone" value={telefone} onChange={setTelMotorista} />
         <button onClick={handleCadastrar}>Cadastrar Motorista </button>
     </form>
     </div>

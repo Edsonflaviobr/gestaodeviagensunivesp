@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { jwtDecode } from 'jwt-decode';
 import './styles.css';
 import { Header } from '../../Componentes/Header/Header.jsx';
 import { Title } from '../../Componentes/Title/Title.jsx';
@@ -24,24 +22,20 @@ const Login = ({ email, password }) => {
 
     const onSubmit = async (formData) => {
         try {
-            const response = await api.post('https://api-best-browser-games.vercel.app/users/login', {
+            const response = await api.post('usuario/login', {
                 email: formData.email,
-                password: formData.password,
+                senha: formData.senha,
             });
 
             if (response.status === 201) {
-                const decodedToken = jwtDecode(response.data.token);
-                if (decodedToken && decodedToken.id) {
-                    sessionStorage.setItem('accessToken', response.data.token);
-                    sessionStorage.setItem('user_id', decodedToken.id);
-                    sessionStorage.setItem('nome', decodedToken.name);
-                    sessionStorage.setItem('email', decodedToken.email);
-                    sessionStorage.setItem('roles', JSON.stringify(decodedToken.roles));
-
+                const userData = response.data; 
+                sessionStorage.setItem('nome', userData.nome);
+                sessionStorage.setItem('email', userData.email);
+                sessionStorage.setItem('roles', JSON.stringify(userData.roles));
                 navigate('/menu');
             } else {
                 alert('Usuário ou senha inválido');
-            }}
+            }
         } catch (error) {
             console.error('Erro no login:', error);
             alert('Usuário ou senha inválido');
@@ -85,8 +79,8 @@ const Login = ({ email, password }) => {
                                 type="password"
                                 placeholder="Digite uma senha"
                                 leftIcon={<MdLock />}
-                                id="password"
-                                name="password"
+                                id="senha"
+                                name="senha"
                                 control={control}
                                 rules={{
                                     required: 'Senha é obrigatória'
@@ -111,10 +105,5 @@ const Login = ({ email, password }) => {
         </>
     );
 }
-
-Login.propTypes = {
-    email: PropTypes.string.isRequired,
-    password: PropTypes.number.isRequired,
-};
 
 export { Login }

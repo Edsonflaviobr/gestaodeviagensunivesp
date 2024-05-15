@@ -20,9 +20,9 @@ const Home = () => {
                             <img src={tapi} alt="Bandeira Tapiratiba" title="Bandeira Tapiratiba" />
                         </figure>
                         <br></br>
-                        <Text text="Bem-vindo ao Gerenciador de Viagens Saúde Tour." />
+                        <Text text="Bem-vindo ao Gerenciador de Viagens Saúde Tour" />
                         <Text text="Essa aplicação web foi desenvolvida para a gestão de logística 
-                                    da Secretária de Saúde do Município de Tapiratiba." />
+                                    da Secretária de Saúde do Município de Tapiratiba" />
                         <Link to="/login">
                             <button className="button--assine">Começar agora</button>
                         </Link>  

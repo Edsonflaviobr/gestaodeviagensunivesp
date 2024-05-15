@@ -12,22 +12,23 @@ import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 
 const CadastroViagem = () => {
-  const [dataSelecionada, setDataSelecionada] = useState(null);
+  const [data_select, setData_Select] = useState(null);
   const [horaSelecionada, setHoraSelecionada] = useState(null);
-  const [nomePaciente, setNomePaciente] = useState('');
-  const [rgPaciente, setRgPaciente] = useState('');
+  const [nome_paciente, setNomePaciente] = useState('');
+  const [rg_paciente, setRgPaciente] = useState('');
+  const [tel_paciente, setTelPaciente] = useState ('');
   const [destino, setDestino] = useState('');
-  const [enderecoDestino, setEnderecoDestino] = useState('');
-  const [pontoPaciente, setPontoPaciente] = useState('');
-  const [motoristaDesignado, setMotoristaDesignado] = useState('');
-  const [observacoes, setObservacoes] = useState('');
-  const [acompanhanteNecessario, setAcompanhanteNecessario] = useState(false);
+  const [end_destino, setEnderecoDestino] = useState('');
+  const [ponto_paciente, setPontoPaciente] = useState('');
+  const [obs, setObservacoes] = useState('');
+  const [ac, setAcompanhanteNecessario] = useState(false);
+
 
   const navigate = useNavigate();
 
 
   const handleDataSelecionada = (date) => {
-    setDataSelecionada(date);
+    setData_Select(date);
   };
 
   const handleHoraSelecionada = (time) => {
@@ -36,7 +37,7 @@ const CadastroViagem = () => {
 
   const verificarDisponibilidade = async () => {
     try {
-      const response = await api.get(`/verificar-disponibilidade?data=${dataSelecionada}&hora=${horaSelecionada}`);
+      const response = await api.get(`viagem?data=${data_select}&hora=${horaSelecionada}`);
       return response.data.disponivel;
     } catch (error) {
       console.error('Erro ao verificar disponibilidade:', error);
@@ -48,7 +49,7 @@ const CadastroViagem = () => {
 
   const handleCadastrar = async (formData) => {
     try {
-        if (!dataSelecionada || !horaSelecionada) {
+        if (!data_select || !horaSelecionada) {
           alert('Por favor, selecione uma data e hora.');
           return;
         }
@@ -59,25 +60,25 @@ const CadastroViagem = () => {
           return;
         }
 
-        const formattedDate = format(new Date(dataSelecionada), 'ddMMyyyy');
+        const formattedDate = format(new Date(data_select), 'ddMMyyyy');
 
         const formData = {
-          dataSelecionada,
-          nomePaciente,
-          rgPaciente,
+          data_select,
+          nome_paciente,
+          rg_paciente,
+          tel_paciente,
           destino,
-          enderecoDestino,
-          pontoPaciente,
-          motoristaDesignado,
-          observacoes,
-          acompanhanteNecessario,
+          end_destino,
+          ponto_paciente,
+          obs,
+          ac,
         };
 
-        const response = await api.post('https://api-best-browser-games.vercel.app/users', formData);
+        const response = await api.post('viagem/', formData);
   
         if (response.status === 201) {
           alert ('Viagem Cadastrar com sucesso!')
-          navigate ('/')
+          navigate ('/menu')
         } else {
           console.error('Erro ao cadastrar viagem', response);
         }
@@ -102,7 +103,7 @@ const CadastroViagem = () => {
       <div className='horario'>
         <label> Data </label>
             <DatePicker
-              selected={dataSelecionada}
+              selected={data_select}
               onChange={handleDataSelecionada}
               dateFormat="dd/MM/yyyy"
               placeholderText="Selecione uma data"
@@ -125,20 +126,20 @@ const CadastroViagem = () => {
               placeholderText="Selecione uma hora"
             />
       </div>  
-          <LabelInput label="Nome do Paciente" value={nomePaciente} onChange={setNomePaciente} />
-          <LabelInput label="RG do Paciente" value={rgPaciente} onChange={setRgPaciente} />
+          <LabelInput label="Nome do Paciente" value={nome_paciente} onChange={setNomePaciente} />
+          <LabelInput label="RG do Paciente" value={rg_paciente} onChange={setRgPaciente} />
+          <LabelInput label="Telefone do Paciente" value={tel_paciente} onChange={setTelPaciente} />
           <LabelInput label="Destino" value={destino} onChange={setDestino} />
-          <LabelInput label="Endereço do Destino" value={enderecoDestino} onChange={setEnderecoDestino} />
-          <LabelInput label="Ponto do Paciente" value={pontoPaciente} onChange={setPontoPaciente} />
-          <LabelInput label="Motorista Designado" value={motoristaDesignado} onChange={setMotoristaDesignado} />
-          <LabelInput label="Observações" value={observacoes} onChange={setObservacoes} type="textarea" />
+          <LabelInput label="Endereço do Destino" value={end_destino} onChange={setEnderecoDestino} />
+          <LabelInput label="Ponto do Paciente" value={ponto_paciente} onChange={setPontoPaciente} />
+          <LabelInput label="Observações" value={obs} onChange={setObservacoes} type="textarea" />
   
         <div>
           <label>Necessita de Acompanhante </label>
-          <input type="checkbox" checked={acompanhanteNecessario} onChange={handleAcompanhanteChange} />
+          <input type="checkbox" checked={ac} onChange={handleAcompanhanteChange} />
         </div>
   
-        {acompanhanteNecessario && (
+        {ac && (
           <Link to="/cadastro-acompanhante">
             <button>Cadastro Acompanhante</button>
           </Link>
