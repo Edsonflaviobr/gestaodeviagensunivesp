@@ -18,13 +18,13 @@ Este projeto consiste em uma aplicação web construída com React para criar um
 
 ### Funcionalidades
 
-1. Listagem de Produtos: Os produtos são carregados a partir de uma API de escopo aberto.
+1. Cadastrar usuário no sistema.
 
-2. Detalhes do Produto: Clicar em um produto abre um modal contendo imagem, nome, preço e navegação.
+2. Cadastrar e consultar viagens.
 
-3. Navegação no Modal: O modal permite navegação para produtos anteriores e seguintes.
+3. Cadastrar acompanhantes.
 
-4. Campo de Pesquisa:Um campo de pesquisa permite filtrar os produtos conforme o usuário digita.
+4. Alterar e excluir usuários do sistema.
 
 ### Estrutura do Projeto
 
