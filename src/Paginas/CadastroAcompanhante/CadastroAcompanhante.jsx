@@ -25,7 +25,7 @@ const CadastroAcompanhante = () => {
       });
 
       if (response.status === 201) {
-        navigate('/');
+        navigate('/menu');
       } else {
         alert('Erro ao cadastrar acompanhante');
       }

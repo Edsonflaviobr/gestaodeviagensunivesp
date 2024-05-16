@@ -9,15 +9,15 @@ const Header = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    const name = sessionStorage.getItem("nome");
+    const nome = sessionStorage.getItem("nome");
     const email = sessionStorage.getItem("email");
     const roles = sessionStorage.getItem("roles");
-    const isLoggedIn = name !== null;
+    const isLoggedIn = nome !== null;
 
     if (isLoggedIn) {
-      const userRoles = roles ? JSON.parse(roles) : [];
-      setUserInfo({ name, email, roles: userRoles });
-      setIsAdmin(userRoles && userRoles.includes("admin"));
+      const userRoles = roles ? roles : [];
+      setUserInfo({ nome, email, roles: userRoles });
+      setIsAdmin(userRoles && userRoles.includes("3"));
     } else {
       setUserInfo(null);
       setIsAdmin(false);
@@ -63,7 +63,7 @@ const Header = () => {
                       />
                     </Link>
                   </figure>
-                  <span className="user-name">{userInfo.name}</span>
+                  <span className="user-name">{userInfo.nome}</span>
                   <Link to="/login" onClick={handleLogout}>
                     Sair
                   </Link>

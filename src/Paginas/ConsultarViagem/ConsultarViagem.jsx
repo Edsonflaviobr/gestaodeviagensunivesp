@@ -15,7 +15,7 @@ const ConsultaViagem = () => {
   useEffect(() => {
     const fetchViagens = async () => {
       try {
-        const response = await api.get('viagem');
+        const response = await api.get('viagem/');
         setViagens(response.data);
       } catch (error) {
         console.error('Erro ao buscar viagens:', error);
