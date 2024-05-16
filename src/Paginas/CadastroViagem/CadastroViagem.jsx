@@ -4,9 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; 
 import LabelInput from '../../Componentes/LabelInput/LabelInput.jsx';
 import { api } from '../../Services/api';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'; 
-import { format } from 'date-fns';
 import { Header } from '../../Componentes/Header/Header.jsx';
 import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
@@ -22,47 +20,37 @@ const CadastroViagem = () => {
   const [ponto_paciente, setPontoPaciente] = useState('');
   const [obs, setObservacoes] = useState('');
   const [ac, setAcompanhanteNecessario] = useState(false);
+  const [nome_acompanhante, setNomeAcompanhante] = useState('');
+  const [rg_acompanhante, setRgAcompanhante] = useState('');
+  const [end_acompanhante, setEndAcompanhante] = useState('');
+  const [ponto_acompanhante, setPontoAcompanhante] = useState('');
+
 
 
   const navigate = useNavigate();
 
 
   const handleDataSelecionada = (date) => {
-    setData_Select(date);
+    setData_Select(date); 
   };
 
   const handleHoraSelecionada = (time) => {
     setHora_Select(time);
   };
 
-  const verificarDisponibilidade = async () => {
-    try {
-      const response = await api.get(`viagem?data=${data_select}&hora=${hora_select}`);
-      return response.data.disponivel;
-    } catch (error) {
-      console.error('Erro ao verificar disponibilidade:', error);
-      return false; 
-    }
-  };
-
-
-
+ 
   const handleCadastrar = async (formData) => {
     try {
         if (!data_select || !hora_select) {
           alert('Por favor, selecione uma data e hora.');
           return;
         }
-  
-        const disponivel = await verificarDisponibilidade();
-        if (!disponivel) {
-          alert('Data e hora selecionadas não estão disponíveis. Por favor, escolha outra.');
-          return;
-        }
+        const dataFormatted = data_select.toISOString().split('T')[0];
+        const horaFormatted = hora_select.toTimeString().split(' ')[0];
 
         const formData = {
-          data_select,
-          hora_select,
+          data_select: dataFormatted,
+          hora_select: horaFormatted,
           nome_paciente,
           rg_paciente,
           tel_paciente,
@@ -71,9 +59,20 @@ const CadastroViagem = () => {
           ponto_paciente,
           obs,
           ac,
+          ...(ac && {
+            nome_acompanhante,
+            rg_acompanhante,
+            end_acompanhante,
+            ponto_acompanhante,
+          }),
         };
 
-        const response = await api.post('viagem/', formData);
+        let url = 'viagem'; 
+
+        if (ac) {
+          url = 'viagem/acompanhante';
+        }
+        const response = await api.post(url, formData);
   
         if (response.status === 201) {
           alert ('Viagem Cadastrar com sucesso!')
@@ -139,10 +138,13 @@ const CadastroViagem = () => {
         </div>
   
         {ac && (
-          <Link to="/cadastro-acompanhante">
-            <button>Cadastro Acompanhante</button>
-          </Link>
-        )}
+            <>
+              <LabelInput label="Nome do Acompanhante" value={nome_acompanhante} onChange={setNomeAcompanhante} />
+              <LabelInput label="RG do Acompanhante" value={rg_acompanhante} onChange={setRgAcompanhante} />
+              <LabelInput label="Endereço do Acompanhante" value={end_acompanhante} onChange={setEndAcompanhante} />
+              <LabelInput label="Ponto do Acompanhante" value={ponto_acompanhante} onChange={setPontoAcompanhante} />
+            </>
+          )}
   
         <button type="button" onClick={handleCadastrar}>Cadastrar Viagem </button>
       </form>
