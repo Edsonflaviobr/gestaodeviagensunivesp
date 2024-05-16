@@ -1,0 +1,50 @@
+.contain-master {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #babfd2;
+    border-radius: 10px;
+    padding: 60px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 100%;
+    margin-top: 650px;
+    margin-bottom: 80px;
+  }
+  
+  .horario {
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .contain-main form {
+    display: flex;
+    flex-direction: column;
+    padding: auto;
+    padding-top: 0px;
+  }
+  
+  label {
+    color: #060020;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #0f014d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #21204a;
+  }
+  

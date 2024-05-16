@@ -12,6 +12,7 @@ import { CadastroMotorista }  from "./Paginas/CadastroMotorista/CadastroMotorist
 import { ConsultaViagem } from "./Paginas/ConsultarViagem/ConsultarViagem.jsx"
 import { Menu } from "./Paginas/Menu/Menu.jsx"
 import { ConsultaAdministrador } from "./Paginas/ConsultaAdministrador/ConsultaAdministrador.jsx";
+import { AlteracaoViagem } from "./Paginas/AlteracaoViagem/AlteraçãoViagem.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/cadastro-viagem" element={<CadastroViagem />} />
           <Route path="/cadastro-motorista" element={<CadastroMotorista />} />
           <Route path="/consulta-viagem" element={<ConsultaViagem />} />
+          <Route path="/alteracao-viagem" element={<AlteracaoViagem />} />
           <Route path="/alteracao-cadastro" element={<AlteracaoCadastro />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/consulta-administrador" element={<ConsultaAdministrador />} />

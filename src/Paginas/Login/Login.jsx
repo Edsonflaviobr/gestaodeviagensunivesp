@@ -28,7 +28,8 @@ const Login = ({ email, senha }) => {
             });
 
             if (response.status === 200) {
-                const userData = response.data; 
+                const userData = response.data;
+                sessionStorage.setItem('id', userData.id);
                 sessionStorage.setItem('nome', userData.nome);
                 sessionStorage.setItem('email', userData.email);
                 sessionStorage.setItem('roles', userData.roles);

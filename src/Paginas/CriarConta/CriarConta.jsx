@@ -31,6 +31,7 @@ const CriarConta = () => {
             });
 
             if (response.status === 201) {
+                alert ('Conta criada com sucesso!')
                 navigate('/login');
             } else {
                 alert('Erro ao criar o usuário');
