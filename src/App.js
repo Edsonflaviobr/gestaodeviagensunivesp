@@ -9,7 +9,6 @@ import { RecuperarSenha } from "./Paginas/RecuperarSenha/RecuperarSenha.jsx";
 import { CadastroViagem } from "./Paginas/CadastroViagem/CadastroViagem.jsx";
 import { AlteracaoCadastro } from "./Paginas/AlteracaoCadastro/AlteracaoCadastro.jsx";
 import { CadastroMotorista }  from "./Paginas/CadastroMotorista/CadastroMotorista.jsx";
-import { CadastroAcompanhante } from "./Paginas/CadastroAcompanhante/CadastroAcompanhante.jsx";
 import { ConsultaViagem } from "./Paginas/ConsultarViagem/ConsultarViagem.jsx"
 import { Menu } from "./Paginas/Menu/Menu.jsx"
 import { ConsultaAdministrador } from "./Paginas/ConsultaAdministrador/ConsultaAdministrador.jsx";
@@ -24,7 +23,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/criar-conta" element={<CriarConta />} />
           <Route path="/recuperar-senha" element={<RecuperarSenha />} />
-          <Route path="/cadastro-acompanhante" element={<CadastroAcompanhante />} />
           <Route path="/cadastro-viagem" element={<CadastroViagem />} />
           <Route path="/cadastro-motorista" element={<CadastroMotorista />} />
           <Route path="/consulta-viagem" element={<ConsultaViagem />} />
