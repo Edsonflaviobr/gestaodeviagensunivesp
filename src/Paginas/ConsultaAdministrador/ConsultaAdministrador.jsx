@@ -7,14 +7,15 @@ import LabelInput from '../../Componentes/LabelInput/LabelInput';
 import { Footer } from '../../Componentes/Footer/Footer';
 
 const ConsultaAdministrador = () => {
-  const [consultaUsuario, setConsultaUsuario] = useState('');
+  const [consultaNomeUsuario, setConsultaNomeUsuario] = useState('');
+  const [consultaMatriculaUsuario, setConsultaMatriculaUsuario] = useState('');
   const [usuarios, setUsuarios] = useState([]);
   const [usuarioSelecionado, setUsuarioSelecionado] = useState(null);
 
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const response = await api.get(`usuario?nome=${consultaUsuario}`);
+        const response = await api.get(`usuario?nome=${consultaNomeUsuario}&matricula=${consultaMatriculaUsuario}`);
         setUsuarios(response.data);
       } catch (error) {
         console.error('Erro ao buscar usuários:', error);
@@ -22,18 +23,20 @@ const ConsultaAdministrador = () => {
     };
 
     fetchUsuarios();
-  }, [consultaUsuario]);
+  }, [consultaNomeUsuario, consultaMatriculaUsuario]);
 
  
-  const handleConsultaUsuarioChange = (e) => {
-    setConsultaUsuario(e.target.value);
+  const handleConsultaNomeUsuarioChange = (e) => {
+    setConsultaNomeUsuario(e.target.value);
   };
 
+  const handleConsultaMatriculaUsuarioChange = (e) => {
+    setConsultaMatriculaUsuario(e.target.value);
+  };
 
   const handleUsuarioSelecionado = (usuario) => {
     setUsuarioSelecionado(usuario);
   };
-
 
   return (
     <div>
@@ -42,8 +45,8 @@ const ConsultaAdministrador = () => {
       <form>
       <h2>Consultar Usuários</h2>
           <div>
-            <LabelInput label="Nome" type="text" id="consultaNomeUsuario" value={consultaUsuario} onChange={handleConsultaUsuarioChange} />
-            <LabelInput label="Matrícula" type="number" id="consultaMatriculaUsuario" value={consultaUsuario} onChange={handleConsultaUsuarioChange} />
+            <LabelInput label="Nome" type="text" id="consultaNomeUsuario" value={consultaNomeUsuario} onChange={handleConsultaNomeUsuarioChange} />
+            <LabelInput label="Matrícula" type="number" id="consultaMatriculaUsuario" value={consultaMatriculaUsuario} onChange={handleConsultaMatriculaUsuarioChange} />
             <Text text="Busque por nome ou matrícula" />
           </div>
           <ul>
@@ -63,4 +66,5 @@ const ConsultaAdministrador = () => {
 };
 
 export { ConsultaAdministrador };
+
 

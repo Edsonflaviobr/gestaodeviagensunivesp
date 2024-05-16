@@ -18,7 +18,7 @@ const AlteracaoCadastro = () => {
     mode: 'onChange',
   });
 
-  const userId = sessionStorage.getItem('user_id');
+  const userId = sessionStorage.getItem('id');
  
   useEffect(() => {
     const fetchUserData = async () => {

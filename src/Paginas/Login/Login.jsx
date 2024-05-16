@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
-const Login = ({ email, password }) => {
+const Login = ({ email, senha }) => {
     const navigate = useNavigate();
 
     const { control, handleSubmit, formState: { errors } } = useForm({
@@ -27,11 +27,11 @@ const Login = ({ email, password }) => {
                 senha: formData.senha,
             });
 
-            if (response.status === 201) {
+            if (response.status === 200) {
                 const userData = response.data; 
                 sessionStorage.setItem('nome', userData.nome);
                 sessionStorage.setItem('email', userData.email);
-                sessionStorage.setItem('roles', JSON.stringify(userData.roles));
+                sessionStorage.setItem('roles', userData.roles);
                 navigate('/menu');
             } else {
                 alert('Usuário ou senha inválido');
