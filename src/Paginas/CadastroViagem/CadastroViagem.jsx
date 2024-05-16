@@ -13,7 +13,7 @@ import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
 const CadastroViagem = () => {
   const [data_select, setData_Select] = useState(null);
-  const [horaSelecionada, setHoraSelecionada] = useState(null);
+  const [hora_select, setHora_Select] = useState(null);
   const [nome_paciente, setNomePaciente] = useState('');
   const [rg_paciente, setRgPaciente] = useState('');
   const [tel_paciente, setTelPaciente] = useState ('');
@@ -32,12 +32,12 @@ const CadastroViagem = () => {
   };
 
   const handleHoraSelecionada = (time) => {
-    setHoraSelecionada(time);
+    setHora_Select(time);
   };
 
   const verificarDisponibilidade = async () => {
     try {
-      const response = await api.get(`viagem?data=${data_select}&hora=${horaSelecionada}`);
+      const response = await api.get(`viagem?data=${data_select}&hora=${hora_select}`);
       return response.data.disponivel;
     } catch (error) {
       console.error('Erro ao verificar disponibilidade:', error);
@@ -49,7 +49,7 @@ const CadastroViagem = () => {
 
   const handleCadastrar = async (formData) => {
     try {
-        if (!data_select || !horaSelecionada) {
+        if (!data_select || !hora_select) {
           alert('Por favor, selecione uma data e hora.');
           return;
         }
@@ -60,10 +60,9 @@ const CadastroViagem = () => {
           return;
         }
 
-        const formattedDate = format(new Date(data_select), 'ddMMyyyy');
-
         const formData = {
           data_select,
+          hora_select,
           nome_paciente,
           rg_paciente,
           tel_paciente,
@@ -105,7 +104,7 @@ const CadastroViagem = () => {
             <DatePicker
               selected={data_select}
               onChange={handleDataSelecionada}
-              dateFormat="dd/MM/yyyy"
+              dateFormat="yyyy-MM-dd"
               placeholderText="Selecione uma data"
               showYearDropdown
               yearDropdownItemNumber={15}
@@ -116,13 +115,13 @@ const CadastroViagem = () => {
             />
         <label> Hora </label>
             <DatePicker
-              selected={horaSelecionada}
+              selected={hora_select}
               onChange={handleHoraSelecionada}
               showTimeSelect
               showTimeSelectOnly
               timeIntervals={15}
               timeCaption="Hora"
-              dateFormat="HH:mm"
+              dateFormat="HH:mm:ss"
               placeholderText="Selecione uma hora"
             />
       </div>  

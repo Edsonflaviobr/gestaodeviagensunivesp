@@ -3,7 +3,6 @@ import './styles.css'
 import { api } from '../../Services/api';
 import { Link, Navigate } from 'react-router-dom';
 import { Header } from '../../Componentes/Header/Header';
-import { Text } from '../../Componentes/Text/Text';
 import LabelInput from '../../Componentes/LabelInput/LabelInput.jsx';
 import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
@@ -59,16 +58,10 @@ const ConsultaViagem = () => {
     <form>
     <h2>Consultar Viagens</h2>
       <LabelInput label="Nome do Paciente" type="text" id="consultaNome" value={consulta} onChange={handleConsultaChange} />
-      <LabelInput label="RG do paciente" type="text" id="consultaRG" value={consulta} onChange={handleConsultaChange} />
-      <LabelInput label="Nome do Motorista" type="text" id="consultaNomeMotorista" value={consulta} onChange={handleConsultaChange} />
-      <LabelInput label="Data da Viagem" type="date" id="consultaDataViagem" value={consulta} onChange={handleConsultaChange} />
-    <ul>
+      <ul>
       {viagens.map((viagem) => (
         <li key={viagem.id} onClick={() => handleViagemSelecionada(viagem)}>
           <div>{viagem.nomePaciente}</div>
-          <div>{viagem.rgPaciente}</div>
-          <div>{viagem.nomeMotorista}</div>
-          <div>{viagem.dataViagem}</div>
         </li>
       ))}
     </ul>
@@ -78,7 +71,6 @@ const ConsultaViagem = () => {
         <button onClick={handleDeletarViagem}>Deletar</button>
       </div>
     )}
-     <Text text="Busque por qualquer um dos campos" />
     <Link to="/CadastroViagem">
       <button>Consultar Viagem</button>
     </Link>
