@@ -3,7 +3,7 @@ import {React, useEffect} from 'react';
 import { Header } from '../../Componentes/Header/Header.jsx';
 import { Title } from '../../Componentes/Title/Title.jsx';
 import { Text } from '../../Componentes/Text/Text.jsx';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { Input } from '../../Componentes/Input/Input.jsx';
 import { Button } from '../../Componentes/Button/Button.jsx';
 import { MdAccountCircle, MdEmail, MdLock, MdMap } from 'react-icons/md'
@@ -18,13 +18,14 @@ const AlteracaoCadastro = () => {
     mode: 'onChange',
   });
 
-  const userId = sessionStorage.getItem('id');
-  console.log (userId)
+  const userData = localStorage.getItem("userData");
+  const userDataArray = JSON.parse(userData);
+  const { id, nome, email, roles } = userDataArray[0];
  
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await api.get(`usuario/${userId}`);
+        const response = await api.get(`usuario/${id}`);
         const userData = response.data;
 
         setValue('nome', userData.nome);
@@ -38,16 +39,16 @@ const AlteracaoCadastro = () => {
     };
 
     fetchUserData();
-  }, [userId, setValue,]);
+  }, [id, setValue,]);
 
   const onSubmit = async (formData) => {
     try {
-      const response = await api.put(`usuario/${userId}`, {
-        nome: formData.newNome,
-        email: formData.newEmail,
+      const response = await api.put(`usuario/${id}`, {
+        nome: formData.nome,
+        email: formData.email,
         senha: formData.senha,
         confirma: formData.senha,
-        matricula: formData.newMatricula,
+        matricula: formData.matricula,
         roles: formData.roles, 
       });
 
@@ -89,22 +90,8 @@ const AlteracaoCadastro = () => {
                         <Input type="matricula" placeholder="Digite sua matrícula" leftIcon={<MdMap />} id="matricula" name="matricula" control={control} rules={{ required: 'Matrícula é obrigatória' }} />
                         {errors.matricula && <span>{errors.matricula.message}</span>}
 
-                        <div className="radio-group">
-                          <Controller
-                            name="roles"
-                            control={control}
-                            render={({ field }) => (
-                              <>
-                                <input type="radio" id="roles1" value="1" {...field} />
-                                <label htmlFor="roles1">Operador</label>
-                                <input type="radio" id="roles2" value="2" {...field} />
-                                <label htmlFor="roles2">Administrador</label>
-                              </>
-                            )}
-                          />
-                        </div>
+                        <Input type="number" placeholder="Digite apenas 1 por padrão" leftIcon={<MdMap />} id="roles" name="roles" control={control} rules={{ required: 'Digite apenas 1' }} />
                         {errors.roles && <span>{errors.roles.message}</span>}
-                        
 
                         <Button title="Cadastrar" variant="secondary" type="submit"/>
                     </form>
