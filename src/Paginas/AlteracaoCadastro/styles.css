@@ -68,3 +68,19 @@ span {
     font-size: 35px;
     color: #0f0050;
 }
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .radio-group input[type="radio"] {
+    margin: 0 10px 0 0;
+    width: auto;
+  }
+  
+  .radio-group label {
+    margin-right: 20px;
+    font-weight: normal;
+  }

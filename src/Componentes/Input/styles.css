@@ -22,3 +22,19 @@
     border: 0;
     height: 30px;
 }
+
+.input-radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-radio-group input[type="radio"] {
+    margin: 0 10px 0 0;
+    width: auto;
+  }
+  
+  .input-radio-group label {
+    margin-right: 20px;
+    font-weight: normal;
+  }

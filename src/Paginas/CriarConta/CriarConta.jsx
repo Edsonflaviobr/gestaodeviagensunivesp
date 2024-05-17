@@ -27,14 +27,14 @@ const CriarConta = () => {
                 senha: formData.senha,
                 confirma: formData.senha,
                 matricula: formData.matricula,
-                roles: formData.roles,
+                roles: formData.roles = 1,
             });
 
             if (response.status === 201) {
                 alert ('Conta criada com sucesso!')
                 navigate('/login');
             } else {
-                alert('Erro ao criar o usuário');
+                alert('Erro ao criar o usuário. E-mail já em uso.');
             }
         } catch (error) {
             console.error('Erro ao criar o usuário', error);
@@ -70,9 +70,6 @@ const CriarConta = () => {
 
                         <Input type="matricula" placeholder="Digite sua matrícula" leftIcon={<MdMap />} id="matricula" name="matricula" control={control} rules={{ required: 'Matrícula é obrigatória' }} />
                         {errors.matricula && <span>{errors.matricula.message}</span>}
-
-                        <Input type="number" placeholder="Digite apenas 1 por padrão" leftIcon={<MdMap />} id="roles" name="roles" control={control} rules={{ required: 'Digite apenas 1' }} />
-                        {errors.roles && <span>{errors.roles.message}</span>}
 
                         <Button title="Cadastrar" variant="secondary" type="submit"/>
                     </form>
