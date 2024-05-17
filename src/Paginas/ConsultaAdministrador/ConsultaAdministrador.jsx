@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './styles.css'
+import './styles.css';
 import { api } from '../../Services/api';
 import { Header } from '../../Componentes/Header/Header';
-import LabelInput from '../../Componentes/LabelInput/LabelInput';
 import { Footer } from '../../Componentes/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,15 +18,20 @@ const ConsultaAdministrador = () => {
 
   const handleConsultarUsuario = async () => {
     try {
-      setLoading(true); // Ativar o estado de loading
-      const response = await api.get(`usuario?nome=${consultaNomeUsuario}`);
-      setUsuariosFiltrados(response.data);
+      setLoading(true);
+      const response = await api.get('usuario');
+      const usuarios = response.data;
+      const usuariosFiltrados = usuarios.filter(usuario =>
+        usuario.nome.toLowerCase().includes(consultaNomeUsuario.toLowerCase())
+      );
+      setUsuariosFiltrados(usuariosFiltrados);
     } catch (error) {
       console.error('Erro ao buscar usuários:', error);
     } finally {
-      setLoading(false); // Desativar o estado de loading
+      setLoading(false);
     }
   };
+  
 
   const handleUsuarioSelecionado = (usuario) => {
     setUsuarioSelecionado(usuario);
@@ -52,19 +56,19 @@ const ConsultaAdministrador = () => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleConsultarUsuario();
+  };
+
   return (
     <div>
       <Header />
       <div className='adm'>
-        <form onSubmit={(e) => { e.preventDefault(); handleConsultarUsuario(); }}>
+        <form onSubmit={handleSubmit}>
           <h2>Consultar Usuários</h2>
-          <LabelInput
-            label="Nome do Usuário"
-            type="text"
-            id="consultaNomeUsuario"
-            value={consultaNomeUsuario}
-            onChange={handleConsultaNomeUsuarioChange}
-          />
+          <label> Nome do Usuário </label>
+          <input type="text" id="consultaNomeUsuario" value={consultaNomeUsuario} onChange={handleConsultaNomeUsuarioChange} />
           <button type="submit">Pesquisar</button>
         </form>
         {loading ? (
@@ -97,6 +101,7 @@ const ConsultaAdministrador = () => {
 };
 
 export { ConsultaAdministrador };
+
 
 
 
