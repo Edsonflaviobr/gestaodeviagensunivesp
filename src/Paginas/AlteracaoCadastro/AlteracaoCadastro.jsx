@@ -51,7 +51,7 @@ const AlteracaoCadastro = () => {
         roles: formData.roles, 
       });
 
-      if (response.status === 200) {
+      if (response.status === 204) {
         alert('Cadastro atualizado com sucesso!');
         navigate('/');
       } else {

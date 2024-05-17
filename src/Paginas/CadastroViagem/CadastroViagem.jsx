@@ -25,10 +25,7 @@ const CadastroViagem = () => {
   const [end_acompanhante, setEndAcompanhante] = useState('');
   const [ponto_acompanhante, setPontoAcompanhante] = useState('');
 
-
-
   const navigate = useNavigate();
-
 
   const handleDataSelecionada = (date) => {
     setData_Select(date); 
@@ -38,7 +35,6 @@ const CadastroViagem = () => {
     setHora_Select(time);
   };
 
- 
   const handleCadastrar = async (formData) => {
     try {
         if (!data_select || !hora_select) {
