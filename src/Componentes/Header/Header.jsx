@@ -9,22 +9,26 @@ const Header = () => {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
+    const id = sessionStorage.getItem("id");
     const nome = sessionStorage.getItem("nome");
     const email = sessionStorage.getItem("email");
     const roles = sessionStorage.getItem("roles");
     const isLoggedIn = nome !== null;
-
+    
     if (isLoggedIn) {
       const userRoles = roles ? roles : [];
-      setUserInfo({ nome, email, roles: userRoles });
-      setIsAdmin(userRoles && userRoles.includes("3"));
+      setUserInfo({ id, nome, email, roles: userRoles });
+      setIsAdmin(userRoles && userRoles.includes("1"));
     } else {
       setUserInfo(null);
       setIsAdmin(false);
     }
   }, [isAdmin]);
 
+
+
   const handleLogout = () => {
+    sessionStorage.removeItem("id");
     sessionStorage.removeItem("nome");
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("roles");
@@ -54,7 +58,7 @@ const Header = () => {
               {userInfo ? (
                 <div className="user-info">
                   <figure>
-                    <Link to="/alteracao-cadastro">
+                    <Link to="/menu">
                       <img
                         className="image-name"
                         src={usuerOn}

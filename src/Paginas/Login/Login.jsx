@@ -26,13 +26,16 @@ const Login = ({ email, senha }) => {
                 email: formData.email,
                 senha: formData.senha,
             });
-
+            console.log(response.data);
             if (response.status === 200) {
                 const userData = response.data;
+                console.log (userData)
                 sessionStorage.setItem('id', userData.id);
                 sessionStorage.setItem('nome', userData.nome);
                 sessionStorage.setItem('email', userData.email);
                 sessionStorage.setItem('roles', userData.roles);
+                console.log (userData)
+
                 navigate('/menu');
             } else {
                 alert('Usuário ou senha inválido');

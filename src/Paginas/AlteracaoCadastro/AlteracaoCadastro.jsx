@@ -3,7 +3,7 @@ import {React, useEffect} from 'react';
 import { Header } from '../../Componentes/Header/Header.jsx';
 import { Title } from '../../Componentes/Title/Title.jsx';
 import { Text } from '../../Componentes/Text/Text.jsx';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { Input } from '../../Componentes/Input/Input.jsx';
 import { Button } from '../../Componentes/Button/Button.jsx';
 import { MdAccountCircle, MdEmail, MdLock, MdMap } from 'react-icons/md'
@@ -89,8 +89,22 @@ const AlteracaoCadastro = () => {
                         <Input type="matricula" placeholder="Digite sua matrícula" leftIcon={<MdMap />} id="matricula" name="matricula" control={control} rules={{ required: 'Matrícula é obrigatória' }} />
                         {errors.matricula && <span>{errors.matricula.message}</span>}
 
-                        <Input type="number" placeholder="Digite apenas 1 por padrão" leftIcon={<MdMap />} id="roles" name="roles" control={control} rules={{ required: 'Digite apenas 1' }} />
+                        <div className="radio-group">
+                          <Controller
+                            name="roles"
+                            control={control}
+                            render={({ field }) => (
+                              <>
+                                <input type="radio" id="roles1" value="1" {...field} />
+                                <label htmlFor="roles1">Operador</label>
+                                <input type="radio" id="roles2" value="2" {...field} />
+                                <label htmlFor="roles2">Administrador</label>
+                              </>
+                            )}
+                          />
+                        </div>
                         {errors.roles && <span>{errors.roles.message}</span>}
+                        
 
                         <Button title="Cadastrar" variant="secondary" type="submit"/>
                     </form>

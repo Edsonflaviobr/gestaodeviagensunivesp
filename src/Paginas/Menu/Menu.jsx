@@ -7,8 +7,8 @@ import { Header } from '../../Componentes/Header/Header.jsx';
 import { Footer } from '../../Componentes/Footer/Footer.jsx'
 
 
-const Menu = ({ isAdmin }) => { // Recebe uma propriedade isAdmin para indicar se o usuÃ¡rio Ã© ADM ou nÃ£o
-
+const Menu = () => {
+    const isAdmin = sessionStorage.getItem("roles") === "1";
     return (
         <div>
             <Header />
