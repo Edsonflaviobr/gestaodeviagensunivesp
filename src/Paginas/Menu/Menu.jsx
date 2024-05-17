@@ -8,7 +8,8 @@ import { Footer } from '../../Componentes/Footer/Footer.jsx'
 
 
 const Menu = () => {
-    const isAdmin = sessionStorage.getItem("roles") === "1";
+    const isAdmin = localStorage.getItem("userData.roles") === "1";
+  
     return (
         <div>
             <Header />

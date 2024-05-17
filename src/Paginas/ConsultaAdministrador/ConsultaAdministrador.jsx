@@ -24,6 +24,7 @@ const ConsultaAdministrador = () => {
       const usuariosFiltrados = usuarios.filter(usuario =>
         usuario.nome.toLowerCase().includes(consultaNomeUsuario.toLowerCase())
       );
+      localStorage.setItem('usuariosFiltrados', JSON.stringify(usuariosFiltrados));
       setUsuariosFiltrados(usuariosFiltrados);
     } catch (error) {
       console.error('Erro ao buscar usuários:', error);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import { Header } from '../../Componentes/Header/Header.jsx';
 import { Title } from '../../Componentes/Title/Title.jsx';
@@ -12,8 +12,9 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { Footer } from '../../Componentes/Footer/Footer.jsx';
 
-const Login = ({ email, senha }) => {
+const Login = () => {
     const navigate = useNavigate();
+    const [error, setError] = useState(null);
 
     const { control, handleSubmit, formState: { errors } } = useForm({
         reValidateMode: 'onChange',
@@ -26,26 +27,20 @@ const Login = ({ email, senha }) => {
                 email: formData.email,
                 senha: formData.senha,
             });
-            console.log(response.data);
+
             if (response.status === 200) {
                 const userData = response.data;
-                console.log (userData)
-                sessionStorage.setItem('id', userData.id);
-                sessionStorage.setItem('nome', userData.nome);
-                sessionStorage.setItem('email', userData.email);
-                sessionStorage.setItem('roles', userData.roles);
-                console.log (userData)
-
+                localStorage.setItem('userData', JSON.stringify(userData));
+                console.log(userData);
                 navigate('/menu');
             } else {
-                alert('Usuário ou senha inválido');
+                setError('Usuário ou senha inválido');
             }
         } catch (error) {
             console.error('Erro no login:', error);
-            alert('Usuário ou senha inválido');
+            setError('Usuário ou senha inválido');
         }
     };
-
 
     return (
         <>
@@ -92,6 +87,8 @@ const Login = ({ email, senha }) => {
                             />
                             {errors.password && <span>{errors.password.message}</span>}
 
+                            {error && <span>{error}</span>}
+
                             <br />
 
                             <Button title="Entrar" variant="secondary" type="submit" />
@@ -110,4 +107,4 @@ const Login = ({ email, senha }) => {
     );
 }
 
-export { Login }
+export { Login };
