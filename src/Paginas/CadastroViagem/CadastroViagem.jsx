@@ -75,7 +75,7 @@ const CadastroViagem = () => {
           alert ('Viagem Cadastrar com sucesso!')
           
           const doc = new jsPDF();
-          doc.text('Dados da Viagem Alterada', 10, 10);
+          doc.text('Dados da Viagem Cadastrada', 10, 10);
           doc.text(`Data: ${dataFormatted}`, 10, 20);
           doc.text(`Hora: ${horaFormatted}`, 10, 30);
           doc.text(`Nome do Paciente: ${nome_paciente}`, 10, 40);
