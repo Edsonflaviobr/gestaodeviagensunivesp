@@ -86,8 +86,12 @@ const AlteracaoViagem = () => {
           ponto_acompanhante,
         }),
       };
+      let url = `viagem/${location.state.viagem.id}`; 
 
-      let url = `viagem/acompanhante/${location.state.viagem.id}`;
+        if (ac) {
+          url = `viagem/acompanhante/${location.state.viagem.id}`;
+        }
+    
       const response = await api.put(url, formData);
 
       if (response.status === 204) {
