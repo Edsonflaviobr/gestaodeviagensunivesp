@@ -5,6 +5,7 @@ import { Footer } from "../../Componentes/Footer/Footer.jsx";
 import { Header } from "../../Componentes/Header/Header";
 import { api } from "../../Services/api";
 import "./styles.css";
+import jsPDF from 'jspdf';
 
 const ConsultaViagem = () => {
   const [consulta, setConsulta] = useState("");
@@ -73,6 +74,26 @@ const ConsultaViagem = () => {
   // Função para formatar a data no formato brasileiro
   const formatarData = (data) => {
     return format(new Date(data), "dd/MM/yyyy");
+  };
+
+  const handleSalvarPDF = () => {
+    if (!viagemSelecionada) return;
+
+    const doc = new jsPDF();
+
+    doc.text('Detalhes da Viagem', 10, 10);
+    doc.text(`Data: ${viagemSelecionada.data_select}`, 10, 20);
+    doc.text(`Hora: ${viagemSelecionada.hora_select}`, 10, 30);
+    doc.text(`Nome do Paciente: ${viagemSelecionada.nome_paciente}`, 10, 40);
+    doc.text(`RG do Paciente: ${viagemSelecionada.rg_paciente}`, 10, 50);
+    doc.text(`Telefone do Paciente: ${viagemSelecionada.tel_paciente}`, 10, 60);
+    doc.text(`Destino: ${viagemSelecionada.destino}`, 10, 70);
+    doc.text(`Endereço do Destino: ${viagemSelecionada.end_destino}`, 10, 80);
+    doc.text(`Ponto do Paciente: ${viagemSelecionada.ponto_paciente}`, 10, 90);
+    doc.text(`Observações: ${viagemSelecionada.obs}`, 10, 100);
+
+
+    doc.save('viagem.pdf');
   };
 
   return (
@@ -176,34 +197,6 @@ const ConsultaViagem = () => {
                   </td>
                   <td>{viagemSelecionada.obs}</td>
                 </tr>
-                {viagemSelecionada.ac && (
-                  <>
-                    <tr>
-                      <td>
-                        <strong>Nome do Acompanhante</strong>
-                      </td>
-                      <td>{viagemSelecionada.nome_acompanhante}</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <strong>RG do Acompanhante</strong>
-                      </td>
-                      <td>{viagemSelecionada.rg_acompanhante}</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <strong>Endereço do Acompanhante</strong>
-                      </td>
-                      <td>{viagemSelecionada.end_acompanhante}</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <strong>Ponto do Acompanhante</strong>
-                      </td>
-                      <td>{viagemSelecionada.ponto_acompanhante}</td>
-                    </tr>
-                  </>
-                )}
               </tbody>
             </table>
             <button type="button" onClick={handleEditarViagem}>
@@ -211,6 +204,9 @@ const ConsultaViagem = () => {
             </button>
             <button type="button" onClick={handleDeletarViagem}>
               Deletar
+            </button>
+            <button type="button" onClick={handleSalvarPDF}>
+              Salvar em PDF
             </button>
           </div>
         )}

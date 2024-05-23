@@ -14,7 +14,7 @@ const Header = () => {
       const userDataArray = JSON.parse(userData);
       const { id, nome, email, roles } = userDataArray[0];
       setUserInfo({ id, nome, email, roles });
-      setIsAdmin(roles);//alterado 
+      setIsAdmin(roles === 2);//alterado 
     } else {
       setUserInfo(null);
       setIsAdmin(false);
@@ -46,7 +46,7 @@ const Header = () => {
               {userInfo && <Link to="/cadastro-viagem">Cadastro de Viagens</Link>}
               {userInfo && <Link to="/cadastro-motorista">Cadastro de Motorista</Link>}
               {userInfo && <Link to="/consulta-viagem">Consulta</Link>}
-              {userInfo && <Link to="/consulta-administrador">Adm</Link>}  
+              {isAdmin && <Link to="/consulta-administrador">Adm</Link>}  
 
               {userInfo ? (
                 <div className="user-info">
@@ -77,5 +77,5 @@ const Header = () => {
   );
 };
 
-export { Header };
+export { Header };
 

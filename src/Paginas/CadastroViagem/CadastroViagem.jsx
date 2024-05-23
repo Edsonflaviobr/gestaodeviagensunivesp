@@ -7,6 +7,7 @@ import { api } from '../../Services/api';
 import { useNavigate } from 'react-router-dom'; 
 import { Header } from '../../Componentes/Header/Header.jsx';
 import { Footer } from '../../Componentes/Footer/Footer.jsx';
+import { jsPDF } from 'jspdf';
 
 
 const CadastroViagem = () => {
@@ -72,7 +73,27 @@ const CadastroViagem = () => {
   
         if (response.status === 201) {
           alert ('Viagem Cadastrar com sucesso!')
-          navigate ('/menu')
+          
+          const doc = new jsPDF();
+          doc.text('Dados da Viagem Alterada', 10, 10);
+          doc.text(`Data: ${dataFormatted}`, 10, 20);
+          doc.text(`Hora: ${horaFormatted}`, 10, 30);
+          doc.text(`Nome do Paciente: ${nome_paciente}`, 10, 40);
+          doc.text(`RG do Paciente: ${rg_paciente}`, 10, 50);
+          doc.text(`Telefone do Paciente: ${tel_paciente}`, 10, 60);
+          doc.text(`Destino: ${destino}`, 10, 70);
+          doc.text(`Endereço do Destino: ${end_destino}`, 10, 80);
+          doc.text(`Ponto do Paciente: ${ponto_paciente}`, 10, 90);
+          doc.text(`Observações: ${obs}`, 10, 100);
+          if (ac) {
+            doc.text(`Nome do Acompanhante: ${nome_acompanhante}`, 10, 110);
+            doc.text(`RG do Acompanhante: ${rg_acompanhante}`, 10, 120);
+            doc.text(`Endereço do Acompanhante: ${end_acompanhante}`, 10, 130);
+            doc.text(`Ponto do Acompanhante: ${ponto_acompanhante}`, 10, 140);
+          }
+          doc.save('ViagemCadastrada.pdf');
+          
+          navigate('/menu');
         } else {
           console.error('Erro ao cadastrar viagem', response);
         }

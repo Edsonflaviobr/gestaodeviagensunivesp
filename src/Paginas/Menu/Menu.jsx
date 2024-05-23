@@ -8,24 +8,25 @@ import { Footer } from '../../Componentes/Footer/Footer.jsx'
 
 
 const Menu = () => {
-    const isAdmin = localStorage.getItem("userData.roles") === "1";
-  
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    const isAdmin = userData && userData[0].roles === 2;
+    
     return (
         <div>
             <Header />
-            <div class="container">
-                <div class="menu-item">
+            <div className="container">
+                <div className="menu-item">
                     <a href="/cadastro-viagem">
                         <img src={iconViagem} alt="viagem" width="150" height="150" />
                         <br />
-                        <strong class="menu-link">Cadastrar Viagem</strong>
+                        <strong className="menu-link">Cadastrar Viagem</strong>
                     </a>
                 </div>
-                <div class="menu-item">
+                <div className="menu-item">
                     <a href="/cadastro-motorista">
                         <img src={iconMotorista} alt="motorista" width="150" height="150" />
                         <br />
-                        <strong class="menu-link">Cadastrar Motorista</strong>
+                        <strong className="menu-link">Cadastrar Motorista</strong>
                     </a>
                 </div>
                 <div></div>
@@ -34,15 +35,15 @@ const Menu = () => {
                         <a href="/consulta-admistrador">
                             <img src={iconUsuario} alt="usuario" width="150" height="150" />
                             <br />
-                            <strong class="menu-link">Gerir Usuários</strong>
+                            <strong className="menu-link">Gerir Usuários</strong>
                         </a>
                     ) : (
-                        <div class="disabled-link">
+                        <div className="disabled-link">
                             <img src={iconUsuario} alt="usuario" width="150" height="150" />
                             <br/>
                             <strong>Gerir Usuários</strong>
                             <br/>
-                            <span class="disabled-text">Apenas administradores podem acessar</span>
+                            <span className="disabled-text">Apenas administradores podem acessar</span>
                         </div>
                     )}
                 </div>
