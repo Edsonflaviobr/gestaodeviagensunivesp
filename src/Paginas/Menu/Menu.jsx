@@ -32,7 +32,7 @@ const Menu = () => {
                 <div></div>
                 <div class="menu-item">
                     {isAdmin ? (
-                        <a href="/consulta-admistrador">
+                        <a href="/consulta-administrador">
                             <img src={iconUsuario} alt="usuario" width="150" height="150" />
                             <br />
                             <strong className="menu-link">Gerir Usuários</strong>
