@@ -1,30 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import './styles.css';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'; 
-import LabelInput from '../../Componentes/LabelInput/LabelInput.jsx';
-import { api } from '../../Services/api';
-import { useNavigate, useLocation } from 'react-router-dom'; 
-import { Header } from '../../Componentes/Header/Header.jsx';
-import { Footer } from '../../Componentes/Footer/Footer.jsx';
+import React, { useEffect, useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Footer } from "../../Componentes/Footer/Footer.jsx";
+import { Header } from "../../Componentes/Header/Header.jsx";
+import { api } from "../../Services/api";
+import "./styles.css";
 
 const AlteracaoViagem = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [data_select, setData_Select] = useState(null);
   const [hora_select, setHora_Select] = useState(null);
-  const [nome_paciente, setNomePaciente] = useState('');
-  const [rg_paciente, setRgPaciente] = useState('');
-  const [tel_paciente, setTelPaciente] = useState('');
-  const [destino, setDestino] = useState('');
-  const [end_destino, setEnderecoDestino] = useState('');
-  const [ponto_paciente, setPontoPaciente] = useState('');
-  const [obs, setObservacoes] = useState('');
+  const [nome_paciente, setNomePaciente] = useState("");
+  const [rg_paciente, setRgPaciente] = useState("");
+  const [tel_paciente, setTelPaciente] = useState("");
+  const [destino, setDestino] = useState("");
+  const [end_destino, setEnderecoDestino] = useState("");
+  const [ponto_paciente, setPontoPaciente] = useState("");
+  const [obs, setObservacoes] = useState("");
   const [ac, setAcompanhanteNecessario] = useState(false);
-  const [nome_acompanhante, setNomeAcompanhante] = useState('');
-  const [rg_acompanhante, setRgAcompanhante] = useState('');
-  const [end_acompanhante, setEndAcompanhante] = useState('');
-  const [ponto_acompanhante, setPontoAcompanhante] = useState('');
+  const [ac_id, setAcompanhanteID] = useState("");
+  const [nome_acompanhante, setNomeAcompanhante] = useState("");
+  const [rg_acompanhante, setRgAcompanhante] = useState("");
+  const [end_acompanhante, setEndAcompanhante] = useState("");
+  const [ponto_acompanhante, setPontoAcompanhante] = useState("");
 
   useEffect(() => {
     if (location.state && location.state.viagem) {
@@ -39,7 +39,8 @@ const AlteracaoViagem = () => {
       setPontoPaciente(viagem.ponto_paciente);
       setObservacoes(viagem.obs);
       setAcompanhanteNecessario(viagem.ac);
-      if (viagem.ac) {
+      setAcompanhanteID(viagem.ac_id);
+      if (viagem.ac_id) {
         setNomeAcompanhante(viagem.nome_acompanhante);
         setRgAcompanhante(viagem.rg_acompanhante);
         setEndAcompanhante(viagem.end_acompanhante);
@@ -49,7 +50,7 @@ const AlteracaoViagem = () => {
   }, [location.state]);
 
   const handleDataSelecionada = (date) => {
-    setData_Select(date); 
+    setData_Select(date);
   };
 
   const handleHoraSelecionada = (time) => {
@@ -59,11 +60,11 @@ const AlteracaoViagem = () => {
   const handleCadastrar = async () => {
     try {
       if (!data_select || !hora_select) {
-        alert('Por favor, selecione uma data e hora.');
+        alert("Por favor, selecione uma data e hora.");
         return;
       }
-      const dataFormatted = data_select.toISOString().split('T')[0];
-      const horaFormatted = hora_select.toTimeString().split(' ')[0];
+      const dataFormatted = data_select.toISOString().split("T")[0];
+      const horaFormatted = hora_select.toTimeString().split(" ")[0];
 
       const formData = {
         data_select: dataFormatted,
@@ -76,7 +77,8 @@ const AlteracaoViagem = () => {
         ponto_paciente,
         obs,
         ac,
-        ...(ac && {
+        ac_id,
+        ...(ac_id && {
           nome_acompanhante,
           rg_acompanhante,
           end_acompanhante,
@@ -84,18 +86,18 @@ const AlteracaoViagem = () => {
         }),
       };
 
-      let url = `viagem/${location.state.viagem.id}`;
+      let url = `viagem/acompanhante/${location.state.viagem.id}`;
       const response = await api.put(url, formData);
 
       if (response.status === 204) {
-        alert('Viagem Alterada com sucesso!');
-        navigate('/consulta-viagem');
+        alert("Viagem Alterada com sucesso!");
+        navigate("/consulta-viagem");
       } else {
-        console.error('Erro ao alterar viagem', response);
+        console.error("Erro ao alterar viagem", response);
       }
     } catch (error) {
-      alert('Erro ao alterar viagem');
-      console.error('Erro ao alterar viagem', error);
+      alert("Erro ao alterar viagem");
+      console.error("Erro ao alterar viagem", error);
     }
   };
 
@@ -106,10 +108,10 @@ const AlteracaoViagem = () => {
   return (
     <>
       <Header />
-      <div className='contain-master'>
+      <div className="contain-master">
         <form>
           <h2>Alteração de Viagem</h2>
-          <div className='horario'>
+          <div className="horario">
             <label>Data</label>
             <DatePicker
               selected={data_select}
@@ -136,36 +138,86 @@ const AlteracaoViagem = () => {
             />
           </div>
           <label> Nome do Paciente: </label>
-          <input type='text' value={nome_paciente} onChange={(e) => setNomePaciente(e.target.value)} />
+          <input
+            type="text"
+            value={nome_paciente}
+            onChange={(e) => setNomePaciente(e.target.value)}
+          />
           <label> RG do Paciente: </label>
-          <input type='text' value={rg_paciente} onChange={(e) => setRgPaciente(e.target.value)} />
+          <input
+            type="text"
+            value={rg_paciente}
+            onChange={(e) => setRgPaciente(e.target.value)}
+          />
           <label> Telefone do Paciente: </label>
-          <input type='text' value={tel_paciente} onChange={(e) => setTelPaciente(e.target.value)} />
+          <input
+            type="text"
+            value={tel_paciente}
+            onChange={(e) => setTelPaciente(e.target.value)}
+          />
           <label> Destino: </label>
-          <input type='text' value={destino} onChange={(e) => setDestino(e.target.value)} />
+          <input
+            type="text"
+            value={destino}
+            onChange={(e) => setDestino(e.target.value)}
+          />
           <label> Endereço do Destino: </label>
-          <input type='text' value={end_destino} onChange={(e) => setEnderecoDestino(e.target.value)} />
+          <input
+            type="text"
+            value={end_destino}
+            onChange={(e) => setEnderecoDestino(e.target.value)}
+          />
           <label> Ponto do paciente: </label>
-          <input type='text' value={ponto_paciente} onChange={(e) => setPontoPaciente(e.target.value)} />
+          <input
+            type="text"
+            value={ponto_paciente}
+            onChange={(e) => setPontoPaciente(e.target.value)}
+          />
           <label> Observações: </label>
-          <input value={obs} onChange={(e) => setObservacoes(e.target.value)} type="textarea" />
+          <input
+            value={obs}
+            onChange={(e) => setObservacoes(e.target.value)}
+            type="textarea"
+          />
           <div>
             <label>Necessita de Acompanhante</label>
-            <input type="checkbox" checked={ac} onChange={handleAcompanhanteChange} />
+            <input
+              type="checkbox"
+              checked={ac}
+              onChange={handleAcompanhanteChange}
+            />
           </div>
           {ac && (
             <>
               <label> Nome do Acomapanhante: </label>
-              <input type='text' value={nome_acompanhante} onChange={(e) => setNomeAcompanhante(e.target.value)} />
+              <input
+                type="text"
+                value={nome_acompanhante}
+                onChange={(e) => setNomeAcompanhante(e.target.value)}
+              />
               <label> RG do Acomapanhante: </label>
-              <input type='text' value={rg_acompanhante} onChange={(e) => setRgAcompanhante(e.target.value)} />
+              <input
+                type="text"
+                value={rg_acompanhante}
+                onChange={(e) => setRgAcompanhante(e.target.value)}
+              />
               <label> Endereço do Acomapanhante: </label>
-              <input type='text' value={end_acompanhante} onChange={(e) => setEndAcompanhante(e.target.value)} />
+              <input
+                type="text"
+                value={end_acompanhante}
+                onChange={(e) => setEndAcompanhante(e.target.value)}
+              />
               <label> Ponto do Acomapanhante: </label>
-              <input type='text'value={ponto_acompanhante} onChange={(e) => setPontoAcompanhante(e.target.value)} />
+              <input
+                type="text"
+                value={ponto_acompanhante}
+                onChange={(e) => setPontoAcompanhante(e.target.value)}
+              />
             </>
           )}
-          <button type="button" onClick={handleCadastrar}>Alterar Viagem</button>
+          <button type="button" onClick={handleCadastrar}>
+            Alterar Viagem
+          </button>
         </form>
       </div>
       <Footer />

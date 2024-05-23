@@ -1,13 +1,56 @@
+.bodyconsul {
+  margin-top: 100%;
+  margin-bottom: 10%;
+}
+
 .consul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #babfd2;
-    padding: 60px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    width: 100%;
-    margin-top: 80px;
-    margin-bottom: 80px;
+  background-color: #babfd2;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 40px;
+}
+
+.detalhes-viagem {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.detalhes-viagem td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.detalhes-viagem td strong {
+  font-weight: bold;
+}
+
+.detalhes-viagem tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.detalhes-viagem tr:hover {
+  background-color: #f1f1f1;
+}
+
+.consul button {
+  background-color: #0f014d;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.consul button:hover {
+  background-color: #2700d6;
 }
