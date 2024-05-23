@@ -7,9 +7,9 @@ header {
   height: 57px;
   position: fixed;
   top: 0;
-  left: 0; 
+  left: 0;
   background: #0f0050;
-  z-index: 1;
+  z-index: 999;
 }
 
 header .header__content {
@@ -27,14 +27,14 @@ header .header__content nav .nav__button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;    
+  justify-content: center;
 }
 
 header .header__content nav .user-info {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
 }
 
 header .header__content nav > figure > img {
@@ -46,7 +46,7 @@ header .header__content nav .nav__button .user-info .image-name {
 }
 
 header .header__content nav .nav__button .user-name {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-size: 16px;
   color: #f7b84b;
@@ -56,12 +56,11 @@ header .header__content nav .nav__button .user-name {
 }
 
 header .header-container {
-      margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-
 a {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-style: normal;
   font-size: 16px;
   line-height: 22px;
@@ -71,9 +70,9 @@ a {
 }
 
 header .header__content nav a {
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 header .header__content nav .nav__button .user-info span {
-  margin-right: 10px; 
+  margin-right: 10px;
 }
