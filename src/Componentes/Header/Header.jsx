@@ -51,7 +51,7 @@ const Header = () => {
               {userInfo ? (
                 <div className="user-info">
                   <figure>
-                    <Link to="/alteracao-cadastro">
+                    <Link to="/menu">
                       <img
                         className="image-name"
                         src={usuerOn}
